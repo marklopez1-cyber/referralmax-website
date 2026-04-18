@@ -224,6 +224,59 @@
     @media (max-width: 1020px) { .features-grid { grid-template-columns: repeat(2,1fr); } }
     @media (max-width: 560px)  { .features-grid { grid-template-columns: 1fr; } }
 
+    /* ---------- PLATFORM PREVIEW ---------- */
+    .preview { background: var(--cloud); }
+    .preview-tabs { display: flex; gap: 10px; justify-content: center; margin-bottom: 36px; flex-wrap: wrap; }
+    .preview-tab {
+      padding: 10px 22px; border-radius: 999px; border: 1px solid var(--line);
+      background: #fff; font-weight: 600; font-size: 14px; cursor: pointer;
+      transition: all 0.15s ease; color: var(--slate);
+    }
+    .preview-tab.active, .preview-tab:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .preview-screen {
+      display: none; background: #fff; border-radius: 18px;
+      border: 1px solid var(--line); overflow: hidden;
+      box-shadow: 0 20px 50px -20px rgba(14,42,71,0.15);
+    }
+    .preview-screen.active { display: block; }
+    .preview-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 24px; border-bottom: 1px solid var(--line); background: var(--navy); color: #fff;
+    }
+    .preview-topbar .ptb-brand { font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+    .preview-topbar .ptb-brand .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+    .preview-topbar .ptb-nav { display: flex; gap: 18px; font-size: 13px; opacity: 0.7; }
+    .preview-body { display: grid; grid-template-columns: 200px 1fr; min-height: 380px; }
+    .preview-sidebar {
+      background: #f8fafc; border-right: 1px solid var(--line); padding: 20px 0;
+    }
+    .preview-sidebar .ps-item {
+      padding: 10px 20px; font-size: 13px; color: var(--slate); display: flex; align-items: center; gap: 10px;
+    }
+    .preview-sidebar .ps-item.active { background: rgba(30,91,168,0.08); color: var(--blue); font-weight: 600; border-right: 2px solid var(--blue); }
+    .preview-sidebar .ps-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+    .preview-content { padding: 28px; }
+    .preview-content h4 { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 20px; }
+    .p-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-bottom: 24px; }
+    .p-stat {
+      background: var(--cloud); border-radius: 12px; padding: 16px;
+    }
+    .p-stat .pv { font-size: 22px; font-weight: 800; color: var(--navy); }
+    .p-stat .pl { font-size: 11px; color: var(--slate); text-transform: uppercase; letter-spacing: 0.5px; }
+    .p-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .p-table th { text-align: left; padding: 10px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--slate); border-bottom: 1px solid var(--line); }
+    .p-table td { padding: 10px 12px; border-bottom: 1px solid var(--line); color: var(--navy); }
+    .p-badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+    .p-badge.green { background: rgba(46,184,76,0.12); color: var(--green); }
+    .p-badge.blue { background: rgba(30,91,168,0.12); color: var(--blue); }
+    .p-badge.orange { background: rgba(245,130,32,0.12); color: var(--orange); }
+    .preview-cta { text-align: center; margin-top: 36px; }
+    @media (max-width: 860px) {
+      .preview-body { grid-template-columns: 1fr; }
+      .preview-sidebar { display: none; }
+      .p-stats { grid-template-columns: repeat(2,1fr); }
+    }
+
     /* ---------- DIGITAL CARD FEATURE ---------- */
     .cards-feature {
       background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
@@ -352,6 +405,40 @@
     .cta-band .btn:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
     .cta-band .btn.ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.5); margin-left: 10px; }
 
+    /* ---------- SIGNUP FORM ---------- */
+    .signup-form-card {
+      background: #fff; border-radius: 18px; padding: 40px 36px;
+      box-shadow: 0 30px 60px -20px rgba(14,42,71,0.2);
+      max-width: 520px; margin: 30px auto 0; text-align: left;
+    }
+    .signup-form-card h3 { font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .signup-form-card .form-sub { font-size: 14px; color: var(--slate); margin-bottom: 24px; }
+    .form-row { margin-bottom: 16px; }
+    .form-row label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 5px; }
+    .form-row input, .form-row select {
+      width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px;
+      font-size: 15px; font-family: inherit; color: var(--navy); background: #fff;
+      transition: border-color 0.15s ease;
+    }
+    .form-row input:focus, .form-row select:focus { outline: none; border-color: var(--blue); }
+    .form-row-half { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-submit {
+      width: 100%; padding: 14px; border: none; border-radius: 10px;
+      background: var(--orange); color: #fff; font-size: 16px; font-weight: 700;
+      cursor: pointer; transition: all 0.15s ease; font-family: inherit; margin-top: 8px;
+    }
+    .form-submit:hover { background: #da6f10; transform: translateY(-1px); }
+    .form-note { font-size: 12px; color: var(--slate); text-align: center; margin-top: 12px; }
+    .form-divider { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: var(--slate); font-size: 13px; }
+    .form-divider::before, .form-divider::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
+    .form-alt-btn {
+      display: block; width: 100%; padding: 12px; border: 1px solid var(--line); border-radius: 10px;
+      background: #fff; color: var(--navy); font-size: 15px; font-weight: 600;
+      cursor: pointer; transition: all 0.15s ease; font-family: inherit; text-align: center;
+    }
+    .form-alt-btn:hover { border-color: var(--blue); color: var(--blue); }
+    @media (max-width: 560px) { .form-row-half { grid-template-columns: 1fr; } }
+
     /* ---------- FOOTER ---------- */
     footer { background: var(--navy); color: #fff; padding: 60px 0 30px; }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
@@ -387,7 +474,7 @@
         </ul>
       </nav>
       <div class="nav-cta">
-        <a href="#" class="btn btn-ghost">Log In</a>
+        <a href="https://referralmax.appdepot.net/login" class="btn btn-ghost">Log In</a>
         <a href="#cta" class="btn btn-primary">Start Free Trial</a>
       </div>
     </div>
@@ -460,14 +547,14 @@
   <!-- TRUST STRIP -->
   <div class="trust-strip">
     <div class="container">
-      <div class="tl">Trusted by 3,400+ growing businesses</div>
+      <div class="tl">Built for businesses like yours</div>
       <div class="trust-logos">
-        <span>BLUEBIRD SPA</span>
-        <span>HOMETOWN H&amp;A</span>
-        <span>NORTHSIDE RETAIL</span>
-        <span>LEDGERWORKS</span>
-        <span>CITYFIT GYMS</span>
-        <span>OAKLINE DTC</span>
+        <span>HVAC &amp; PLUMBING</span>
+        <span>MED-SPAS</span>
+        <span>HOME SERVICES</span>
+        <span>RETAIL</span>
+        <span>FITNESS</span>
+        <span>PROFESSIONAL</span>
       </div>
     </div>
   </div>
@@ -536,19 +623,116 @@
         </div>
         <div class="feat">
           <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4"/><path d="m16.24 7.76 2.83-2.83"/><path d="M18 12h4"/><path d="m16.24 16.24 2.83 2.83"/><path d="M12 18v4"/><path d="m7.76 16.24-2.83 2.83"/><path d="M6 12H2"/><path d="m7.76 7.76-2.83-2.83"/></svg></div>
-          <h4>No-Code Integrations</h4>
-          <p>Native connectors for Shopify, WooCommerce, Square, Stripe — plus a universal snippet for everything else.</p>
+          <h4>AI-Powered Outreach</h4>
+          <p>Built-in AI rewrites your referral messages by tone — friendly, professional, casual, or urgent — so every text and email converts.</p>
         </div>
         <div class="feat">
-          <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <h4>Fraud Protection Built-In</h4>
-          <p>Velocity checks, device fingerprinting, and self-referral blocking keep every program clean by default.</p>
+          <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h4>Employee Referral System</h4>
+          <p>Give technicians and staff their own referral codes with QR badges. Track employee referrals separately with custom reward structures.</p>
         </div>
         <div class="feat">
           <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
           <h4>Branded for You</h4>
-          <p>Custom colors, logo, and email templates on a referral page at yourbrand.referralmax.com — or your own domain.</p>
+          <p>Custom colors, logo, and branded email templates on your own referral portal at yourcompany.referralmax.appdepot.net.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORM PREVIEW -->
+  <section class="preview">
+    <div class="container">
+      <div class="section-head">
+        <span class="tag">Live Preview</span>
+        <h2>See exactly what you get.</h2>
+        <p>Two dashboards, one platform. Admins run the program. Affiliates share and earn.</p>
+      </div>
+      <div class="preview-tabs">
+        <div class="preview-tab active" onclick="showPreview('admin')">Admin Dashboard</div>
+        <div class="preview-tab" onclick="showPreview('affiliate')">Affiliate Portal</div>
+      </div>
+
+      <!-- Admin Preview -->
+      <div class="preview-screen active" id="preview-admin">
+        <div class="preview-topbar">
+          <div class="ptb-brand"><div class="dot"></div> Your Company Name</div>
+          <div class="ptb-nav"><span>Admin Panel</span></div>
+        </div>
+        <div class="preview-body">
+          <div class="preview-sidebar">
+            <div class="ps-item active"><span class="ps-dot"></span> Dashboard</div>
+            <div class="ps-item"><span class="ps-dot"></span> Affiliates</div>
+            <div class="ps-item"><span class="ps-dot"></span> Employees</div>
+            <div class="ps-item"><span class="ps-dot"></span> Customers</div>
+            <div class="ps-item"><span class="ps-dot"></span> Services</div>
+            <div class="ps-item"><span class="ps-dot"></span> Campaigns</div>
+            <div class="ps-item"><span class="ps-dot"></span> Payments</div>
+            <div class="ps-item"><span class="ps-dot"></span> Reports</div>
+            <div class="ps-item"><span class="ps-dot"></span> Settings</div>
+          </div>
+          <div class="preview-content">
+            <h4>Dashboard Overview</h4>
+            <div class="p-stats">
+              <div class="p-stat"><div class="pv">24</div><div class="pl">Active Affiliates</div></div>
+              <div class="p-stat"><div class="pv">187</div><div class="pl">Total Referrals</div></div>
+              <div class="p-stat"><div class="pv">$4,250</div><div class="pl">Rewards Paid</div></div>
+              <div class="p-stat"><div class="pv">34%</div><div class="pl">Conversion Rate</div></div>
+            </div>
+            <table class="p-table">
+              <tr><th>Affiliate</th><th>Referrals</th><th>Earned</th><th>Status</th></tr>
+              <tr><td>Sarah M.</td><td>28</td><td>$1,400</td><td><span class="p-badge green">Active</span></td></tr>
+              <tr><td>James K.</td><td>19</td><td>$950</td><td><span class="p-badge green">Active</span></td></tr>
+              <tr><td>Maria L.</td><td>12</td><td>$600</td><td><span class="p-badge green">Active</span></td></tr>
+              <tr><td>Tom B.</td><td>3</td><td>—</td><td><span class="p-badge orange">Pending</span></td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Affiliate Preview -->
+      <div class="preview-screen" id="preview-affiliate">
+        <div class="preview-topbar">
+          <div class="ptb-brand"><div class="dot"></div> Your Company Name</div>
+          <div class="ptb-nav"><span>Affiliate Portal</span></div>
+        </div>
+        <div class="preview-body">
+          <div class="preview-sidebar">
+            <div class="ps-item active"><span class="ps-dot"></span> Dashboard</div>
+            <div class="ps-item"><span class="ps-dot"></span> My Code</div>
+            <div class="ps-item"><span class="ps-dot"></span> Services</div>
+            <div class="ps-item"><span class="ps-dot"></span> Contacts</div>
+            <div class="ps-item"><span class="ps-dot"></span> Referrals</div>
+            <div class="ps-item"><span class="ps-dot"></span> Payments</div>
+          </div>
+          <div class="preview-content">
+            <h4>My Referral Code</h4>
+            <div class="p-stats" style="grid-template-columns: repeat(3,1fr);">
+              <div class="p-stat"><div class="pv">$1,400</div><div class="pl">Total Earned</div></div>
+              <div class="p-stat"><div class="pv">28</div><div class="pl">Referrals Sent</div></div>
+              <div class="p-stat"><div class="pv">18</div><div class="pl">Converted</div></div>
+            </div>
+            <div style="background: var(--cloud); border-radius: 12px; padding: 20px; margin-bottom: 20px; text-align: center;">
+              <div style="font-size: 11px; text-transform: uppercase; color: var(--slate); letter-spacing: 1px; margin-bottom: 8px;">Your Referral Code</div>
+              <div style="font-size: 28px; font-weight: 800; color: var(--blue); letter-spacing: 3px; font-family: ui-monospace, monospace;">SARH7X4Q</div>
+              <div style="font-size: 13px; color: var(--slate); margin-top: 8px;">Share via SMS, Email, or QR Code</div>
+              <div style="display: flex; gap: 10px; justify-content: center; margin-top: 14px;">
+                <span class="p-badge blue" style="padding: 6px 14px; font-size: 12px; cursor: pointer;">Send Text</span>
+                <span class="p-badge green" style="padding: 6px 14px; font-size: 12px; cursor: pointer;">Send Email</span>
+                <span class="p-badge orange" style="padding: 6px 14px; font-size: 12px; cursor: pointer;">QR Code</span>
+              </div>
+            </div>
+            <table class="p-table">
+              <tr><th>Customer</th><th>Service</th><th>Status</th><th>Earned</th></tr>
+              <tr><td>John D.</td><td>AC Install</td><td><span class="p-badge green">Paid</span></td><td>$50</td></tr>
+              <tr><td>Lisa W.</td><td>Furnace Repair</td><td><span class="p-badge blue">Scheduled</span></td><td>—</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-cta">
+        <a href="#cta" class="btn btn-primary btn-lg">Try It Free for 14 Days</a>
       </div>
     </div>
   </section>
@@ -729,10 +913,71 @@
     <div class="container">
       <h2>Your next best customer is one referral away.</h2>
       <p>Launch your program in under 15 minutes. The first 14 days are on us.</p>
-      <a href="#" class="btn btn-lg">Start Free Trial</a>
-      <a href="#" class="btn btn-lg ghost">Book a 15-Minute Demo</a>
+
+      <div class="signup-form-card">
+        <h3>Start your free trial</h3>
+        <p class="form-sub">No credit card required. Set up in minutes.</p>
+        <form id="signupForm" onsubmit="handleSignup(event)">
+          <div class="form-row form-row-half">
+            <div>
+              <label for="firstName">First name</label>
+              <input type="text" id="firstName" placeholder="Mark" required />
+            </div>
+            <div>
+              <label for="lastName">Last name</label>
+              <input type="text" id="lastName" placeholder="Lopez" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="email">Work email</label>
+            <input type="email" id="email" placeholder="you@company.com" required />
+          </div>
+          <div class="form-row">
+            <label for="company">Company name</label>
+            <input type="text" id="company" placeholder="Your Business Name" required />
+          </div>
+          <div class="form-row">
+            <label for="industry">Industry</label>
+            <select id="industry">
+              <option value="">Select your industry</option>
+              <option value="hvac">HVAC / Plumbing / Electrical</option>
+              <option value="health">Health, Wellness &amp; Beauty</option>
+              <option value="retail">Retail &amp; E-commerce</option>
+              <option value="professional">Professional Services</option>
+              <option value="home">Home Services &amp; Cleaning</option>
+              <option value="fitness">Fitness &amp; Gyms</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <button type="submit" class="form-submit">Start Free 14-Day Trial</button>
+          <p class="form-note">By signing up, you agree to our Terms of Service and Privacy Policy.</p>
+        </form>
+        <div class="form-divider">or</div>
+        <a href="https://referralmax.appdepot.net/login" class="form-alt-btn">Already have an account? Log in</a>
+      </div>
     </div>
   </section>
+
+  <script>
+    function showPreview(tab) {
+      document.querySelectorAll('.preview-screen').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.preview-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('preview-' + tab).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    function handleSignup(e) {
+      e.preventDefault();
+      const params = new URLSearchParams({
+        first: document.getElementById('firstName').value,
+        last: document.getElementById('lastName').value,
+        email: document.getElementById('email').value,
+        company: document.getElementById('company').value,
+        industry: document.getElementById('industry').value
+      });
+      window.location.href = 'https://referralmax.appdepot.net/login?signup=true&' + params.toString();
+    }
+  </script>
 
   <!-- FOOTER -->
   <footer>
@@ -747,21 +992,20 @@
           <a href="#how">How It Works</a>
           <a href="#features">Features</a>
           <a href="#pricing">Pricing</a>
-          <a href="#">Integrations</a>
+          <a href="https://referralmax.appdepot.net/login">Log In</a>
         </div>
         <div class="footer-col">
-          <h5>Company</h5>
-          <a href="#">About</a>
-          <a href="#">Careers</a>
-          <a href="#">Contact</a>
-          <a href="#">Press</a>
+          <h5>Get Started</h5>
+          <a href="#cta">Start Free Trial</a>
+          <a href="https://referralmax.appdepot.net/login">Admin Login</a>
+          <a href="mailto:support@referralmax.appdepot.net">Contact Us</a>
         </div>
         <div class="footer-col">
-          <h5>Resources</h5>
-          <a href="#">Blog</a>
-          <a href="#">Case Studies</a>
-          <a href="#">Help Center</a>
-          <a href="#">API Docs</a>
+          <h5>Platform</h5>
+          <a href="#features">Affiliate Portal</a>
+          <a href="#features">Employee Referrals</a>
+          <a href="#features">AI Outreach</a>
+          <a href="#features">Digital Rewards</a>
         </div>
       </div>
       <div class="footer-bottom">
