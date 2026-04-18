@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReferralMax — Refer. Earn. Succeed.</title>
+  <meta name="description" content="ReferralMax is the referral and affiliate platform for small and mid-sized businesses. Launch a branded referral program in minutes and reward advocates with instant digital credit cards." />
+  <link rel="icon" type="image/png" href="assets/ReferralMax_Logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --blue:  #1E5BA8;
+      --green: #2EB84C;
+      --orange:#F58220;
+      --navy:  #0E2A47;
+      --cloud: #F7F9FC;
+      --slate: #4A5568;
+      --line:  #E4E8EF;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--navy);
+      background: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- NAV ---------- */
+    header.nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: saturate(1.2) blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 76px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo img { height: 44px; width: auto; }
+    nav ul { display: flex; gap: 28px; list-style: none; }
+    nav a { color: var(--navy); font-weight: 500; font-size: 15px; }
+    nav a:hover { color: var(--blue); }
+    .nav-cta { display: flex; gap: 12px; align-items: center; }
+    .btn {
+      display: inline-block; padding: 11px 20px; border-radius: 10px;
+      font-weight: 600; font-size: 15px; transition: all 0.15s ease;
+      border: 1px solid transparent; cursor: pointer;
+    }
+    .btn-primary { background: var(--orange); color: #fff; }
+    .btn-primary:hover { background: #da6f10; transform: translateY(-1px); }
+    .btn-ghost { color: var(--navy); border: 1px solid var(--line); background: #fff; }
+    .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+    .btn-lg { padding: 14px 26px; font-size: 16px; }
+
+    @media (max-width: 860px) {
+      nav ul { display: none; }
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(ellipse 800px 500px at 85% 0%, rgba(46,184,76,0.12), transparent 60%),
+        radial-gradient(ellipse 800px 500px at 0% 100%, rgba(30,91,168,0.10), transparent 55%),
+        var(--cloud);
+      padding: 90px 0 110px;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center;
+    }
+    .eyebrow {
+      display: inline-block; padding: 6px 14px; border-radius: 999px;
+      background: rgba(30,91,168,0.08); color: var(--blue);
+      font-weight: 600; font-size: 13px; letter-spacing: 0.5px; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 58px; line-height: 1.05; font-weight: 800; color: var(--navy);
+      letter-spacing: -1px; margin-bottom: 20px;
+    }
+    h1 .accent { color: var(--blue); }
+    .hero p.lead {
+      font-size: 19px; color: var(--slate); margin-bottom: 32px; max-width: 560px;
+    }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 22px; }
+    .hero-trust {
+      display: flex; gap: 22px; font-size: 14px; color: var(--slate); flex-wrap: wrap;
+    }
+    .hero-trust span::before { content: "✓"; color: var(--green); font-weight: 800; margin-right: 6px; }
+
+    .hero-visual {
+      position: relative; min-height: 460px;
+    }
+    .card-stack {
+      position: relative; width: 100%; max-width: 460px; margin: 0 auto;
+    }
+    .dash-card {
+      background: #fff; border-radius: 18px; padding: 24px;
+      box-shadow: 0 30px 60px -20px rgba(14,42,71,0.25), 0 2px 6px rgba(14,42,71,0.06);
+      border: 1px solid var(--line);
+    }
+    .dash-head { display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px; }
+    .dash-head h4 { font-size: 15px; font-weight: 700; }
+    .dash-head .pill { font-size: 12px; padding: 4px 10px; border-radius: 999px; background: rgba(46,184,76,0.12); color: var(--green); font-weight: 600; }
+    .dash-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 20px; }
+    .stat { background: var(--cloud); border-radius: 10px; padding: 12px; }
+    .stat .v { font-size: 20px; font-weight: 800; color: var(--navy); }
+    .stat .l { font-size: 11px; color: var(--slate); text-transform: uppercase; letter-spacing: 0.5px; }
+    .chart { height: 110px; background: linear-gradient(180deg, rgba(30,91,168,0.08), rgba(30,91,168,0) 70%); border-radius: 10px; position: relative; overflow: hidden; }
+    .chart svg { width: 100%; height: 100%; }
+
+    .credit-card {
+      position: absolute; bottom: -40px; right: -30px;
+      width: 300px; height: 180px; border-radius: 16px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      color: #fff; padding: 20px; box-shadow: 0 25px 50px -10px rgba(14,42,71,0.45);
+      transform: rotate(-6deg);
+    }
+    .cc-top { display:flex; justify-content: space-between; align-items: center; margin-bottom: 34px; }
+    .cc-brand { font-weight: 700; font-size: 14px; letter-spacing: 0.5px; }
+    .cc-chip { width: 36px; height: 26px; background: linear-gradient(135deg, #e8c77a, #b48a1e); border-radius: 5px; }
+    .cc-number { font-family: ui-monospace, monospace; font-size: 16px; letter-spacing: 2px; margin-bottom: 18px; }
+    .cc-row { display:flex; justify-content: space-between; align-items: end; font-size: 11px; opacity: 0.9; }
+    .cc-amount { position: absolute; top: 18px; right: 20px; font-size: 22px; font-weight: 800; color: var(--green); background: #fff; padding: 4px 10px; border-radius: 8px; }
+
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 40px; }
+      .hero { padding: 60px 0 90px; }
+      .credit-card { right: 0; bottom: -30px; width: 260px; height: 160px; }
+    }
+
+    /* ---------- SECTIONS ---------- */
+    section { padding: 90px 0; }
+    .section-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+    .section-head .tag {
+      display: inline-block; padding: 5px 12px; border-radius: 999px;
+      background: rgba(245,130,32,0.12); color: var(--orange);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-head h2 {
+      font-size: 42px; font-weight: 800; color: var(--navy);
+      letter-spacing: -0.5px; margin-bottom: 14px; line-height: 1.1;
+    }
+    .section-head p { font-size: 18px; color: var(--slate); }
+
+    /* ---------- LOGO STRIP ---------- */
+    .trust-strip {
+      padding: 30px 0; border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .trust-strip .tl { text-align: center; font-size: 13px; color: var(--slate); margin-bottom: 18px; letter-spacing: 0.5px; text-transform: uppercase; font-weight: 600; }
+    .trust-logos { display: flex; justify-content: center; align-items: center; gap: 50px; flex-wrap: wrap; opacity: 0.65; }
+    .trust-logos span { font-weight: 700; color: var(--slate); font-size: 18px; letter-spacing: -0.5px; }
+
+    /* ---------- HOW IT WORKS ---------- */
+    .how { background: var(--cloud); }
+    .steps {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+    }
+    .step {
+      background: #fff; padding: 34px 28px; border-radius: 16px;
+      border: 1px solid var(--line); position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .step:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -20px rgba(14,42,71,0.15); }
+    .step-num {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue), #2a7ad6);
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 18px; margin-bottom: 20px;
+    }
+    .step:nth-child(2) .step-num { background: linear-gradient(135deg, var(--green), #4ad36a); }
+    .step:nth-child(3) .step-num { background: linear-gradient(135deg, var(--orange), #ffa14a); }
+    .step h3 { font-size: 21px; font-weight: 700; margin-bottom: 10px; color: var(--navy); }
+    .step p { color: var(--slate); font-size: 15.5px; }
+
+    @media (max-width: 860px) {
+      .steps { grid-template-columns: 1fr; }
+    }
+
+    /* ---------- FEATURES ---------- */
+    .features-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;
+    }
+    .feat {
+      background: #fff; border: 1px solid var(--line); border-radius: 14px;
+      padding: 26px 22px; transition: all 0.2s ease;
+    }
+    .feat:hover { border-color: var(--blue); transform: translateY(-2px); }
+    .feat-icon {
+      width: 46px; height: 46px; border-radius: 10px;
+      background: rgba(30,91,168,0.1); color: var(--blue);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .feat-icon svg { width: 22px; height: 22px; }
+    .feat h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; color: var(--navy); }
+    .feat p { font-size: 14px; color: var(--slate); line-height: 1.55; }
+
+    @media (max-width: 1020px) { .features-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 560px)  { .features-grid { grid-template-columns: 1fr; } }
+
+    /* ---------- DIGITAL CARD FEATURE ---------- */
+    .cards-feature {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      color: #fff; border-radius: 24px; padding: 70px 60px; margin: 0 24px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .cards-feature::before {
+      content: ""; position: absolute; width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(46,184,76,0.4), transparent 70%);
+      top: -150px; right: -120px; filter: blur(40px);
+    }
+    .cards-feature h2 { font-size: 40px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.5px; }
+    .cards-feature p { font-size: 17px; opacity: 0.9; margin-bottom: 28px; line-height: 1.65; }
+    .cards-feature .bullet { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+    .cards-feature .bullet span.c { color: var(--green); font-weight: 800; margin-top: 2px; }
+    .cards-feature .bullet p { margin: 0; font-size: 15.5px; opacity: 0.95; }
+
+    .wallet-mock {
+      position: relative; display: flex; align-items: center; justify-content: center;
+    }
+    .wallet-mock .virtual-card {
+      width: 340px; height: 210px; border-radius: 18px;
+      background: linear-gradient(135deg, #0a1f3a 0%, #1E5BA8 60%, #2a7ad6 100%);
+      padding: 24px; box-shadow: 0 40px 80px -10px rgba(0,0,0,0.4);
+      position: relative; overflow: hidden;
+    }
+    .wallet-mock .virtual-card::after {
+      content: ""; position: absolute; top: -80px; right: -80px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(46,184,76,0.35), transparent 70%);
+    }
+    .vc-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+    .vc-brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; letter-spacing: 0.3px; }
+    .vc-chip { width: 34px; height: 24px; background: linear-gradient(135deg,#f2d58a,#b38a1e); border-radius: 4px; }
+    .vc-amount { font-size: 30px; font-weight: 800; color: var(--green); margin-bottom: 6px; }
+    .vc-label { font-size: 11px; opacity: 0.75; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 30px; }
+    .vc-number { font-family: ui-monospace, monospace; font-size: 15px; letter-spacing: 2.5px; }
+    .vc-bottom { display: flex; justify-content: space-between; align-items: end; margin-top: 10px; font-size: 11px; opacity: 0.85; }
+
+    @media (max-width: 860px) {
+      .cards-feature { grid-template-columns: 1fr; padding: 50px 30px; margin: 0; border-radius: 0; }
+      .cards-feature h2 { font-size: 30px; }
+      .wallet-mock .virtual-card { width: 300px; height: 190px; }
+    }
+
+    /* ---------- USE CASES ---------- */
+    .use-cases { background: var(--cloud); }
+    .use-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    .use {
+      background: #fff; border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--line); transition: all 0.2s ease;
+    }
+    .use:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -18px rgba(14,42,71,0.2); }
+    .use-img { height: 160px; background-size: cover; background-position: center; }
+    .use-body { padding: 22px; }
+    .use-body h4 { font-size: 17px; font-weight: 700; margin-bottom: 6px; color: var(--navy); }
+    .use-body p { font-size: 14px; color: var(--slate); }
+
+    @media (max-width: 1020px) { .use-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 560px)  { .use-grid { grid-template-columns: 1fr; } }
+
+    /* ---------- STATS ---------- */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 20px;
+      background: #fff; padding: 50px 40px; border-radius: 18px;
+      border: 1px solid var(--line); text-align: center;
+      margin-top: 40px;
+    }
+    .stats-row .n { font-size: 40px; font-weight: 800; color: var(--blue); letter-spacing: -1px; }
+    .stats-row .l { font-size: 13px; color: var(--slate); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-top: 4px; }
+    @media (max-width: 720px) { .stats-row { grid-template-columns: repeat(2,1fr); } }
+
+    /* ---------- PRICING ---------- */
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .plan {
+      background: #fff; border: 1px solid var(--line); border-radius: 18px;
+      padding: 36px 30px; position: relative; transition: all 0.2s ease;
+    }
+    .plan:hover { transform: translateY(-3px); box-shadow: 0 30px 60px -25px rgba(14,42,71,0.2); }
+    .plan.featured { border: 2px solid var(--blue); box-shadow: 0 30px 60px -25px rgba(30,91,168,0.35); }
+    .plan .badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--orange); color: #fff; padding: 5px 14px; border-radius: 999px;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .plan h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+    .plan .sub { font-size: 14px; color: var(--slate); margin-bottom: 22px; }
+    .plan .price { font-size: 44px; font-weight: 800; color: var(--navy); letter-spacing: -1px; }
+    .plan .price span { font-size: 16px; color: var(--slate); font-weight: 500; }
+    .plan ul { list-style: none; margin: 26px 0; }
+    .plan li { font-size: 15px; color: var(--slate); padding: 8px 0; border-top: 1px solid var(--line); display: flex; gap: 10px; }
+    .plan li::before { content: "✓"; color: var(--green); font-weight: 800; }
+    .plan li:first-child { border-top: 0; }
+
+    @media (max-width: 860px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+    /* ---------- TESTIMONIALS ---------- */
+    .quotes { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .quote {
+      background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 28px;
+    }
+    .quote p { font-size: 15.5px; color: var(--navy); line-height: 1.6; margin-bottom: 18px; }
+    .quote .author { display: flex; align-items: center; gap: 12px; }
+    .quote .av {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 16px;
+    }
+    .quote .meta { font-size: 13px; color: var(--slate); }
+    .quote .meta b { color: var(--navy); display: block; font-size: 14px; }
+
+    @media (max-width: 860px) { .quotes { grid-template-columns: 1fr; } }
+
+    /* ---------- CTA BAND ---------- */
+    .cta-band {
+      background: linear-gradient(135deg, var(--orange) 0%, #ff9a42 100%);
+      color: #fff; text-align: center; padding: 80px 24px;
+    }
+    .cta-band h2 { font-size: 40px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 14px; }
+    .cta-band p { font-size: 18px; opacity: 0.95; margin-bottom: 30px; }
+    .cta-band .btn {
+      background: #fff; color: var(--orange); font-weight: 700;
+    }
+    .cta-band .btn:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+    .cta-band .btn.ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.5); margin-left: 10px; }
+
+    /* ---------- FOOTER ---------- */
+    footer { background: var(--navy); color: #fff; padding: 60px 0 30px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-grid img { height: 40px; margin-bottom: 16px; background: #fff; padding: 8px 12px; border-radius: 10px; }
+    .footer-grid p.tag { font-size: 14px; opacity: 0.75; max-width: 320px; }
+    .footer-col h5 { font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; opacity: 0.9; }
+    .footer-col a { display: block; font-size: 14px; opacity: 0.75; padding: 4px 0; }
+    .footer-col a:hover { opacity: 1; color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+      font-size: 13px; opacity: 0.65;
+    }
+    @media (max-width: 860px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        <img src="assets/ReferralMax_Logo.png" alt="ReferralMax" />
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#use-cases">Who It's For</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a href="#" class="btn btn-ghost">Log In</a>
+        <a href="#cta" class="btn btn-primary">Start Free Trial</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Refer · Earn · Succeed</span>
+        <h1>Turn your happiest customers into your <span class="accent">best growth channel.</span></h1>
+        <p class="lead">
+          ReferralMax gives small businesses an effortless way to launch a referral and affiliate program —
+          with instant digital credit-card rewards for every advocate and an automatic discount for every new customer they send your way.
+        </p>
+        <div class="hero-ctas">
+          <a href="#cta" class="btn btn-primary btn-lg">Start Your Free 14-Day Trial</a>
+          <a href="#how" class="btn btn-ghost btn-lg">See How It Works</a>
+        </div>
+        <div class="hero-trust">
+          <span>No credit card required</span>
+          <span>Launch in under 15 minutes</span>
+          <span>Cancel anytime</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="card-stack">
+          <div class="dash-card">
+            <div class="dash-head">
+              <h4>Referral Dashboard</h4>
+              <span class="pill">Live</span>
+            </div>
+            <div class="dash-stats">
+              <div class="stat"><div class="v">184</div><div class="l">Referrals</div></div>
+              <div class="stat"><div class="v">62</div><div class="l">Conversions</div></div>
+              <div class="stat"><div class="v">$3,420</div><div class="l">Paid Out</div></div>
+            </div>
+            <div class="chart">
+              <svg viewBox="0 0 400 110" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="lg" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#1E5BA8" stop-opacity="0.5"/>
+                    <stop offset="100%" stop-color="#1E5BA8" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0,90 L40,70 L80,78 L120,55 L160,60 L200,42 L240,48 L280,30 L320,36 L360,18 L400,22 L400,110 L0,110 Z" fill="url(#lg)"/>
+                <path d="M0,90 L40,70 L80,78 L120,55 L160,60 L200,42 L240,48 L280,30 L320,36 L360,18 L400,22" fill="none" stroke="#1E5BA8" stroke-width="2.5"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="credit-card">
+            <div class="cc-amount">+$50</div>
+            <div class="cc-top">
+              <div class="cc-brand">ReferralMax</div>
+              <div class="cc-chip"></div>
+            </div>
+            <div class="cc-number">•••• •••• •••• 4821</div>
+            <div class="cc-row">
+              <div><div style="opacity:0.7;">Reward Earned</div><div style="font-weight:700;">SARAH M.</div></div>
+              <div style="font-weight:700;">VISA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="container">
+      <div class="tl">Trusted by 3,400+ growing businesses</div>
+      <div class="trust-logos">
+        <span>BLUEBIRD SPA</span>
+        <span>HOMETOWN H&amp;A</span>
+        <span>NORTHSIDE RETAIL</span>
+        <span>LEDGERWORKS</span>
+        <span>CITYFIT GYMS</span>
+        <span>OAKLINE DTC</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="how">
+    <div class="container">
+      <div class="section-head">
+        <span class="tag">How It Works</span>
+        <h2>Launch a real referral program in three simple steps.</h2>
+        <p>No developers. No spreadsheets. No checks in the mail. Just word-of-mouth growth, automated end-to-end.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Set up your program in minutes</h3>
+          <p>Pick your reward amount, your customer discount, and your branding. We generate unique codes and shareable links for every customer, employee, and affiliate partner.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Your advocates share. We track everything.</h3>
+          <p>Customers share by text, email, social, or QR code. ReferralMax attributes every click, sign-up, and sale to the right person — in real time.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>New customers save. Advocates get paid instantly.</h3>
+          <p>Referred customers get an automatic discount at checkout. Their advocate gets a digital credit card loaded with the reward — ready to spend in seconds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <div class="section-head">
+        <span class="tag">Features</span>
+        <h2>Everything you need to turn goodwill into growth.</h2>
+        <p>Built for Main-Street businesses, but powerful enough for multi-location and e-commerce operators.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feat">
+          <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="3"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+          <h4>Instant Digital Credit Cards</h4>
+          <p>Funds hit the advocate's virtual Visa-compatible card seconds after a conversion. Usable everywhere, instantly.</p>
+        </div>
+        <div class="feat">
+          <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.07 0l4-4a5 5 0 0 0-7.07-7.07L13 3"/><path d="M14 11a5 5 0 0 0-7.07 0l-4 4a5 5 0 0 0 7.07 7.07L11 21"/></svg></div>
+          <h4>Unique Codes &amp; Smart Links</h4>
+          <p>Every advocate gets a personal code and short link. Works on any checkout, any POS, any website.</p>
+        </div>
+        <div class="feat">
+          <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+          <h4>Dual-Incentive Engine</h4>
+          <p>Reward the advocate and the new customer in one click. Flat dollar, percentage, tiered, or milestone.</p>
+        </div>
+        <div class="feat">
+          <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><polyline points="7 14 12 9 16 13 21 8"/></svg></div>
+          <h4>Real-Time Attribution</h4>
+          <p>See exactly who drove each sale — customer, employee, or affiliate — with filters by channel and date.</p>
+        </div>
+        <div class="feat">
+          <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="4"/><path d="M17 11a3 3 0 1 0 0-6"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M21 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+          <h4>Affiliate Partner Portal</h4>
+          <p>A branded dashboard where partners log in, grab creative assets, and track earnings in real time.</p>
+        </div>
+        <div class="feat">
+          <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4"/><path d="m16.24 7.76 2.83-2.83"/><path d="M18 12h4"/><path d="m16.24 16.24 2.83 2.83"/><path d="M12 18v4"/><path d="m7.76 16.24-2.83 2.83"/><path d="M6 12H2"/><path d="m7.76 7.76-2.83-2.83"/></svg></div>
+          <h4>No-Code Integrations</h4>
+          <p>Native connectors for Shopify, WooCommerce, Square, Stripe — plus a universal snippet for everything else.</p>
+        </div>
+        <div class="feat">
+          <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h4>Fraud Protection Built-In</h4>
+          <p>Velocity checks, device fingerprinting, and self-referral blocking keep every program clean by default.</p>
+        </div>
+        <div class="feat">
+          <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+          <h4>Branded for You</h4>
+          <p>Custom colors, logo, and email templates on a referral page at yourbrand.referralmax.com — or your own domain.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIGITAL CARDS FEATURE -->
+  <section style="padding: 40px 0;">
+    <div class="cards-feature">
+      <div>
+        <h2>We pay people in real money. Because points don't pay the rent.</h2>
+        <p>Most referral platforms trap your advocates behind redemption minimums, points tables, and mailed checks. ReferralMax drops a virtual Visa-compatible card into their wallet the moment their referral converts.</p>
+        <div class="bullet"><span class="c">✓</span><p>Funds available in seconds — spend online, in-store, or in Apple/Google Wallet</p></div>
+        <div class="bullet"><span class="c">✓</span><p>No minimums. No redemption gates. No expired gift cards.</p></div>
+        <div class="bullet"><span class="c">✓</span><p>3.2× higher advocate participation vs. points-based programs</p></div>
+      </div>
+      <div class="wallet-mock">
+        <div class="virtual-card">
+          <div class="vc-top">
+            <div class="vc-brand">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#2EB84C"><circle cx="12" cy="12" r="12"/></svg>
+              ReferralMax
+            </div>
+            <div class="vc-chip"></div>
+          </div>
+          <div class="vc-amount">$75.00</div>
+          <div class="vc-label">Instant Reward</div>
+          <div class="vc-number">4821 •••• •••• 2907</div>
+          <div class="vc-bottom">
+            <span>CARDHOLDER<br><b style="font-weight:700;">SARAH M.</b></span>
+            <span style="font-size:13px; font-weight:700;">VISA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section id="use-cases" class="use-cases">
+    <div class="container">
+      <div class="section-head">
+        <span class="tag">Who It's For</span>
+        <h2>Made for Main Street. Priced for the back office.</h2>
+        <p>From a three-truck HVAC shop to a growing DTC brand — ReferralMax is built for the owner-operator.</p>
+      </div>
+      <div class="use-grid">
+        <div class="use">
+          <div class="use-img" style="background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=800&q=70');"></div>
+          <div class="use-body">
+            <h4>Local Services</h4>
+            <p>HVAC, plumbers, electricians, cleaners, movers. Pay a $50 card for every neighbor-referred job.</p>
+          </div>
+        </div>
+        <div class="use">
+          <div class="use-img" style="background-image: url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=800&q=70');"></div>
+          <div class="use-body">
+            <h4>Retail &amp; E-commerce</h4>
+            <p>Boutiques, DTC brands, Shopify stores. 15% off for new customers, $25 back for advocates.</p>
+          </div>
+        </div>
+        <div class="use">
+          <div class="use-img" style="background-image: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=70');"></div>
+          <div class="use-body">
+            <h4>Health, Wellness &amp; Beauty</h4>
+            <p>Med-spas, gyms, salons, dentists, chiropractors. Fill the calendar with referred appointments.</p>
+          </div>
+        </div>
+        <div class="use">
+          <div class="use-img" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=70');"></div>
+          <div class="use-body">
+            <h4>Professional Services</h4>
+            <p>Insurance agents, accountants, attorneys, realtors. Turn best clients into your best BD team.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div><div class="n">15 min</div><div class="l">Average Setup Time</div></div>
+        <div><div class="n">5×</div><div class="l">Lower CAC vs. Paid Social</div></div>
+        <div><div class="n">3.2×</div><div class="l">Higher Advocate Engagement</div></div>
+        <div><div class="n">24/7</div><div class="l">Automated Payouts</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-head">
+        <span class="tag">Pricing</span>
+        <h2>Flat monthly pricing. No per-referral surcharge.</h2>
+        <p>Start free for 14 days. Upgrade when you're ready. All plans include instant digital card rewards.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="plan">
+          <h3>Starter</h3>
+          <p class="sub">For solo owners and early programs</p>
+          <div class="price">$49<span>/mo</span></div>
+          <ul>
+            <li>Up to 250 referrals tracked/month</li>
+            <li>1 active program</li>
+            <li>Digital credit card rewards</li>
+            <li>Core integrations</li>
+            <li>Email support</li>
+          </ul>
+          <a href="#cta" class="btn btn-ghost" style="width:100%; text-align:center;">Start Free Trial</a>
+        </div>
+        <div class="plan featured">
+          <div class="badge">Most Popular</div>
+          <h3>Growth</h3>
+          <p class="sub">For growing teams and multi-channel programs</p>
+          <div class="price">$149<span>/mo</span></div>
+          <ul>
+            <li>Unlimited referrals</li>
+            <li>Up to 3 programs</li>
+            <li>Affiliate partner portal</li>
+            <li>Custom branding</li>
+            <li>Priority support &amp; API access</li>
+          </ul>
+          <a href="#cta" class="btn btn-primary" style="width:100%; text-align:center;">Start Free Trial</a>
+        </div>
+        <div class="plan">
+          <h3>Pro</h3>
+          <p class="sub">For multi-location &amp; franchise operators</p>
+          <div class="price">$349<span>/mo</span></div>
+          <ul>
+            <li>Unlimited programs</li>
+            <li>Multi-location support</li>
+            <li>Dedicated success manager</li>
+            <li>Advanced fraud controls &amp; SSO</li>
+            <li>White-label domain</li>
+          </ul>
+          <a href="#cta" class="btn btn-ghost" style="width:100%; text-align:center;">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section style="background: var(--cloud);">
+    <div class="container">
+      <div class="section-head">
+        <span class="tag">Stories</span>
+        <h2>Real owners. Real revenue. Real rewards.</h2>
+      </div>
+      <div class="quotes">
+        <div class="quote">
+          <p>"We added $38,000 in new revenue in our first 90 days. Our customers love getting paid, and we love not having to mail anything."</p>
+          <div class="author">
+            <div class="av">DR</div>
+            <div class="meta"><b>Danielle R.</b>Owner, Bluebird Med-Spa</div>
+          </div>
+        </div>
+        <div class="quote">
+          <p>"I run a three-truck HVAC company. I'm not a marketer. ReferralMax is the first 'growth tool' that actually worked for me on day one."</p>
+          <div class="author">
+            <div class="av">MT</div>
+            <div class="meta"><b>Mike T.</b>Owner, Hometown Heating &amp; Air</div>
+          </div>
+        </div>
+        <div class="quote">
+          <p>"Our affiliate partners used to ghost us after the first check. Now they log in twice a day."</p>
+          <div class="author">
+            <div class="av">PS</div>
+            <div class="meta"><b>Priya S.</b>DTC Brand Operator</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section id="cta" class="cta-band" style="padding: 80px 24px;">
+    <div class="container">
+      <h2>Your next best customer is one referral away.</h2>
+      <p>Launch your program in under 15 minutes. The first 14 days are on us.</p>
+      <a href="#" class="btn btn-lg">Start Free Trial</a>
+      <a href="#" class="btn btn-lg ghost">Book a 15-Minute Demo</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="assets/ReferralMax_Logo.png" alt="ReferralMax" />
+          <p class="tag">The referral and affiliate platform built for Main Street. Refer. Earn. Succeed.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Product</h5>
+          <a href="#how">How It Works</a>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#">Integrations</a>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="#">About</a>
+          <a href="#">Careers</a>
+          <a href="#">Contact</a>
+          <a href="#">Press</a>
+        </div>
+        <div class="footer-col">
+          <h5>Resources</h5>
+          <a href="#">Blog</a>
+          <a href="#">Case Studies</a>
+          <a href="#">Help Center</a>
+          <a href="#">API Docs</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 ReferralMax, Inc. All rights reserved.</div>
+        <div>
+          <a href="#" style="opacity:0.75; margin-right: 16px;">Terms</a>
+          <a href="#" style="opacity:0.75; margin-right: 16px;">Privacy</a>
+          <a href="#" style="opacity:0.75;">Card Program Disclosures</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
