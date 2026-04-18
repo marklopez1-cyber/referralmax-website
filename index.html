@@ -455,6 +455,136 @@
     @media (max-width: 860px) {
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
+
+    /* ========== MOBILE POLISH (≤ 560px) ========== */
+    @media (max-width: 560px) {
+
+      /* — NAV — */
+      .nav-inner { height: 60px; }
+      .logo img { height: 34px; }
+      .nav-cta .btn { padding: 8px 12px; font-size: 13px; }
+      .nav-cta { gap: 8px; }
+
+      /* — HERO — */
+      .hero { padding: 40px 0 60px; }
+      h1 { font-size: 30px; letter-spacing: -0.5px; margin-bottom: 16px; }
+      .eyebrow { font-size: 11px; padding: 5px 10px; margin-bottom: 14px; }
+      .hero p.lead { font-size: 16px; margin-bottom: 24px; }
+      .hero-ctas { flex-direction: column; gap: 10px; }
+      .hero-ctas .btn { width: 100%; text-align: center; }
+      .hero-trust { flex-direction: column; gap: 8px; font-size: 13px; }
+      .hero-visual { min-height: auto; margin-top: 30px; }
+      .card-stack { max-width: 100%; }
+      .dash-card { padding: 18px; }
+      .dash-stats { gap: 8px; }
+      .stat .v { font-size: 16px; }
+      .stat .l { font-size: 10px; }
+      .credit-card {
+        position: relative; bottom: auto; right: auto;
+        width: 100%; max-width: 280px; height: auto; aspect-ratio: 1.7/1;
+        margin: -20px auto 0; transform: rotate(-3deg);
+      }
+      .cc-number { font-size: 14px; }
+      .cc-amount { font-size: 18px; top: 14px; right: 14px; padding: 3px 8px; }
+      .cc-top { margin-bottom: 20px; }
+      .cc-brand { font-size: 12px; }
+      .cc-chip { width: 28px; height: 20px; }
+
+      /* — TRUST STRIP — */
+      .trust-strip { padding: 20px 0; }
+      .trust-logos { gap: 14px 22px; }
+      .trust-logos span { font-size: 13px; }
+
+      /* — SECTION HEADINGS — */
+      section { padding: 60px 0; }
+      .section-head { margin-bottom: 36px; }
+      .section-head h2 { font-size: 28px; }
+      .section-head p { font-size: 15px; }
+
+      /* — HOW IT WORKS — */
+      .step { padding: 24px 20px; }
+      .step h3 { font-size: 18px; }
+      .step p { font-size: 14px; }
+
+      /* — FEATURES — */
+      .feat { padding: 20px 18px; }
+      .feat h4 { font-size: 15px; }
+      .feat p { font-size: 13px; }
+
+      /* — PLATFORM PREVIEW — */
+      .preview-topbar { padding: 10px 16px; }
+      .preview-topbar .ptb-brand { font-size: 12px; }
+      .preview-content { padding: 18px; }
+      .preview-content h4 { font-size: 16px; margin-bottom: 14px; }
+      .p-stats { gap: 10px; }
+      .p-stat { padding: 12px; }
+      .p-stat .pv { font-size: 18px; }
+      .p-stat .pl { font-size: 10px; }
+      .p-table { font-size: 12px; }
+      .p-table th, .p-table td { padding: 8px 6px; }
+      .p-badge { font-size: 10px; padding: 2px 8px; }
+
+      /* — DIGITAL CARDS FEATURE — */
+      .cards-feature { padding: 36px 20px; gap: 30px; }
+      .cards-feature h2 { font-size: 24px; }
+      .cards-feature p { font-size: 15px; }
+      .cards-feature .bullet p { font-size: 14px; }
+      .wallet-mock .virtual-card {
+        width: 100%; max-width: 300px; height: auto; aspect-ratio: 1.6/1;
+        padding: 18px; margin: 0 auto;
+      }
+      .vc-amount { font-size: 24px; }
+      .vc-label { font-size: 10px; margin-bottom: 16px; }
+      .vc-number { font-size: 13px; }
+      .vc-top { margin-bottom: 16px; }
+      .vc-brand { font-size: 12px; }
+      .vc-chip { width: 28px; height: 18px; }
+
+      /* — USE CASES — */
+      .use-img { height: 140px; }
+      .use-body { padding: 16px; }
+      .use-body h4 { font-size: 16px; }
+      .use-body p { font-size: 13px; }
+
+      /* — STATS ROW — */
+      .stats-row { padding: 28px 20px; gap: 16px; }
+      .stats-row .n { font-size: 28px; }
+      .stats-row .l { font-size: 11px; }
+
+      /* — PRICING — */
+      .plan { padding: 28px 22px; }
+      .plan .price { font-size: 36px; }
+      .plan li { font-size: 14px; padding: 7px 0; }
+
+      /* — TESTIMONIALS — */
+      .quote { padding: 22px; }
+      .quote p { font-size: 14px; }
+
+      /* — CTA BAND + SIGNUP FORM — */
+      .cta-band { padding: 50px 16px !important; }
+      .cta-band h2 { font-size: 26px; }
+      .cta-band p { font-size: 15px; }
+      .signup-form-card { padding: 28px 22px; margin-top: 20px; }
+      .signup-form-card h3 { font-size: 19px; }
+
+      /* — FOOTER — */
+      .footer-grid { grid-template-columns: 1fr !important; gap: 28px; }
+      .footer-grid img { height: 34px; }
+      .footer-bottom { flex-direction: column; text-align: center; gap: 10px; font-size: 12px; }
+    }
+
+    /* ========== SMALL PHONES (≤ 380px) ========== */
+    @media (max-width: 380px) {
+      .container { padding: 0 16px; }
+      h1 { font-size: 26px; }
+      .section-head h2 { font-size: 24px; }
+      .nav-cta .btn { padding: 7px 10px; font-size: 12px; }
+      .btn-lg { padding: 12px 18px; font-size: 14px; }
+      .dash-stats { grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+      .p-stats { grid-template-columns: 1fr 1fr !important; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .cards-feature h2 { font-size: 22px; }
+    }
   </style>
 </head>
 <body>
