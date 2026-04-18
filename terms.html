@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — ReferralMax</title>
+  <meta name="description" content="ReferralMax Terms of Service. Review the terms and conditions for using the ReferralMax platform." />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --blue:  #1E5BA8;
+      --green: #2EB84C;
+      --orange:#F58220;
+      --navy:  #0E2A47;
+      --cloud: #F7F9FC;
+      --slate: #4A5568;
+      --line:  #E4E8EF;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--navy);
+      background: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- NAV ---------- */
+    header.nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: saturate(1.2) blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 76px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo img { height: 44px; width: auto; }
+    .nav-cta { display: flex; gap: 12px; align-items: center; }
+    .btn {
+      display: inline-block; padding: 11px 20px; border-radius: 10px;
+      font-weight: 600; font-size: 15px; transition: all 0.15s ease;
+      border: 1px solid transparent; cursor: pointer; color: inherit; text-decoration: none;
+    }
+    .btn-primary { background: var(--orange); color: #fff; }
+    .btn-primary:hover { background: #da6f10; transform: translateY(-1px); text-decoration: none; }
+    .btn-ghost { color: var(--navy); border: 1px solid var(--line); background: #fff; }
+    .btn-ghost:hover { border-color: var(--blue); color: var(--blue); text-decoration: none; }
+
+    /* ---------- PAGE CONTENT ---------- */
+    .page-header {
+      background: var(--cloud);
+      padding: 60px 0 40px;
+      border-bottom: 1px solid var(--line);
+    }
+    .page-header h1 {
+      font-size: 42px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px;
+    }
+    .page-header .effective {
+      font-size: 15px; color: var(--slate);
+    }
+
+    .content {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 50px 24px 80px;
+    }
+    .content h2 {
+      font-size: 22px; font-weight: 700; margin-top: 40px; margin-bottom: 14px;
+      color: var(--navy);
+    }
+    .content h3 {
+      font-size: 17px; font-weight: 600; margin-top: 28px; margin-bottom: 10px;
+      color: var(--navy);
+    }
+    .content p {
+      font-size: 15.5px; line-height: 1.7; color: var(--slate); margin-bottom: 16px;
+    }
+    .content ul, .content ol {
+      margin: 0 0 16px 24px; color: var(--slate); font-size: 15.5px; line-height: 1.7;
+    }
+    .content ul li, .content ol li { margin-bottom: 6px; }
+    .content strong { color: var(--navy); }
+
+    /* ---------- FOOTER ---------- */
+    footer { background: var(--navy); color: #fff; padding: 60px 0 30px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-grid img { height: 40px; margin-bottom: 16px; background: #fff; padding: 8px 12px; border-radius: 10px; }
+    .footer-grid p.tag { font-size: 14px; opacity: 0.75; max-width: 320px; }
+    .footer-col h5 { font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; opacity: 0.9; }
+    .footer-col a { display: block; font-size: 14px; opacity: 0.75; padding: 4px 0; color: #fff; text-decoration: none; }
+    .footer-col a:hover { opacity: 1; text-decoration: none; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+      font-size: 13px; opacity: 0.65;
+    }
+    .footer-bottom a { color: #fff; text-decoration: none; }
+    .footer-bottom a:hover { text-decoration: none; opacity: 1; }
+
+    @media (max-width: 860px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .nav-inner { height: 60px; }
+      .logo img { height: 34px; }
+      .nav-cta .btn { padding: 8px 12px; font-size: 13px; }
+      .page-header { padding: 40px 0 28px; }
+      .page-header h1 { font-size: 28px; }
+      .content { padding: 30px 24px 60px; }
+      .content h2 { font-size: 19px; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/ReferralMax_Logo.png" alt="ReferralMax" />
+      </a>
+      <div class="nav-cta">
+        <a href="index.html" class="btn btn-ghost">Home</a>
+        <a href="https://referralmax.appdepot.net/login" class="btn btn-primary">Log In</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Terms of Service</h1>
+      <p class="effective">Effective Date: April 18, 2026</p>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <p>These Terms of Service ("Terms") govern your access to and use of the ReferralMax platform, including the website at <strong>referralmax.appdepot.net</strong>, all associated subdomains, and related services (collectively, the "Platform"), operated by Instant Heating and Air LLC, doing business as <strong>ReferralMax</strong> ("we," "us," or "our").</p>
+
+    <p>By accessing or using the Platform, you agree to be bound by these Terms. If you do not agree to these Terms, do not access or use the Platform.</p>
+
+    <h2>1. Eligibility</h2>
+    <p>You must be at least 18 years of age and capable of entering into a legally binding agreement to use the Platform. By creating an account, you represent and warrant that you meet these eligibility requirements. If you are using the Platform on behalf of a business or organization, you represent that you have the authority to bind that entity to these Terms.</p>
+
+    <h2>2. Account Registration</h2>
+    <p>To access certain features of the Platform, you must create an account. You agree to provide accurate, current, and complete information during registration and to keep your account information up to date. You are responsible for maintaining the confidentiality of your login credentials and for all activity that occurs under your account. You agree to notify us immediately if you suspect any unauthorized access to your account.</p>
+
+    <h2>3. Platform Description</h2>
+    <p>ReferralMax is a multi-tenant software-as-a-service (SaaS) platform that enables businesses to create, manage, and track customer referral programs. The Platform provides tools for referral tracking, automated SMS and email notifications, digital reward issuance (via Tremendous prepaid cards), analytics dashboards, and branded referral portals. Each participating business ("Company") operates its own referral program through a dedicated subdomain on the Platform.</p>
+
+    <h2>4. Subscription Plans and Billing</h2>
+
+    <h3>4.1 Plans</h3>
+    <p>The Platform offers multiple subscription tiers (Starter, Growth, Pro, and Enterprise), each with different feature limits, messaging quotas, and pricing. Current plan details and pricing are available on our website at the pricing section.</p>
+
+    <h3>4.2 Billing</h3>
+    <p>Subscription fees are billed monthly or annually, as selected during signup. All fees are due in advance and are non-refundable except as required by law. We reserve the right to change our pricing with 30 days' notice to active subscribers.</p>
+
+    <h3>4.3 Free Trial</h3>
+    <p>We may offer a free trial period for new accounts. At the end of the trial, your account will be converted to a paid subscription unless you cancel before the trial expires. No credit card is required during the free trial.</p>
+
+    <h2>5. Acceptable Use</h2>
+    <p>You agree to use the Platform only for lawful purposes and in accordance with these Terms. You agree not to:</p>
+    <ul>
+      <li>Use the Platform to send unsolicited or unauthorized messages, spam, or any communication that violates the Telephone Consumer Protection Act (TCPA), CAN-SPAM Act, or any other applicable law.</li>
+      <li>Send text messages to individuals who have not provided prior express written consent to receive such messages.</li>
+      <li>Use the Platform to transmit any content that is unlawful, threatening, abusive, defamatory, obscene, or otherwise objectionable.</li>
+      <li>Attempt to gain unauthorized access to the Platform, other accounts, or any related systems or networks.</li>
+      <li>Use automated scripts, bots, or scrapers to access or interact with the Platform without our prior written consent.</li>
+      <li>Interfere with or disrupt the integrity or performance of the Platform.</li>
+      <li>Resell, sublicense, or redistribute access to the Platform without our prior written authorization.</li>
+      <li>Use the Platform for any purpose that is fraudulent, deceptive, or harmful.</li>
+    </ul>
+
+    <h2>6. SMS/Text Messaging Terms</h2>
+
+    <h3>6.1 Consent Requirements</h3>
+    <p>If you use the Platform to send SMS/text messages, you are solely responsible for ensuring that each recipient has provided prior express written consent to receive such messages in compliance with the TCPA and all applicable regulations. The Platform provides opt-in mechanisms, but it is your responsibility to ensure they are properly implemented and documented.</p>
+
+    <h3>6.2 Message Content</h3>
+    <p>All messages sent through the Platform must include accurate sender identification and opt-out instructions (e.g., "Reply STOP to opt out"). You agree not to send messages that contain prohibited content, including but not limited to content related to illegal substances, hate speech, or adult content.</p>
+
+    <h3>6.3 Opt-Out Compliance</h3>
+    <p>You must honor all opt-out requests immediately. The Platform automatically processes STOP requests, and you agree not to circumvent this functionality or contact individuals who have opted out.</p>
+
+    <h3>6.4 Messaging Limits</h3>
+    <p>Each subscription plan includes a monthly messaging quota. Messages sent in excess of your plan's quota may incur additional charges or may be queued until the next billing cycle, at our discretion.</p>
+
+    <h2>7. Referral Rewards and Digital Cards</h2>
+
+    <h3>7.1 Reward Issuance</h3>
+    <p>Referral rewards are issued as digital prepaid cards through our third-party partner, Tremendous. Reward amounts, eligibility criteria, and redemption terms are set by each participating Company and are subject to that Company's referral program terms.</p>
+
+    <h3>7.2 Reward Disputes</h3>
+    <p>Disputes regarding reward eligibility, amounts, or redemption should be directed to the participating Company that operates the referral program. ReferralMax facilitates reward delivery but does not make eligibility decisions for individual referral programs.</p>
+
+    <h3>7.3 Tax Responsibility</h3>
+    <p>Recipients of referral rewards are solely responsible for any tax obligations arising from rewards received. We may be required to report reward payments to tax authorities in accordance with applicable law.</p>
+
+    <h2>8. Intellectual Property</h2>
+
+    <h3>8.1 Our Intellectual Property</h3>
+    <p>The Platform, including its design, code, features, documentation, logos, and trademarks, is the property of Instant Heating and Air LLC and is protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or create derivative works based on the Platform without our prior written consent.</p>
+
+    <h3>8.2 Your Content</h3>
+    <p>You retain ownership of any content you upload, submit, or create through the Platform (e.g., company logos, referral messages, campaign settings). By submitting content, you grant us a non-exclusive, worldwide, royalty-free license to use, display, and transmit that content solely for the purpose of operating and providing the Platform.</p>
+
+    <h2>9. Data and Privacy</h2>
+    <p>Your use of the Platform is subject to our <a href="privacy.html">Privacy Policy</a>, which describes how we collect, use, and protect your information. By using the Platform, you consent to the data practices described in our Privacy Policy.</p>
+
+    <h2>10. Third-Party Services</h2>
+    <p>The Platform integrates with third-party services including Twilio (SMS delivery), Tremendous (digital rewards), Supabase (database and authentication), and others. Your use of these integrations may be subject to the terms and policies of those third parties. We are not responsible for the availability, accuracy, or practices of third-party services.</p>
+
+    <h2>11. Disclaimers</h2>
+    <p>THE PLATFORM IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE PLATFORM WILL BE UNINTERRUPTED, ERROR-FREE, OR SECURE, OR THAT ANY DEFECTS WILL BE CORRECTED.</p>
+
+    <h2>12. Limitation of Liability</h2>
+    <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, INSTANT HEATING AND AIR LLC AND ITS OFFICERS, DIRECTORS, EMPLOYEES, AND AGENTS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, REVENUE, DATA, OR USE, ARISING OUT OF OR RELATED TO YOUR USE OF THE PLATFORM, WHETHER BASED ON WARRANTY, CONTRACT, TORT, OR ANY OTHER LEGAL THEORY, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. OUR TOTAL LIABILITY FOR ALL CLAIMS RELATED TO THE PLATFORM SHALL NOT EXCEED THE AMOUNT YOU PAID TO US IN THE TWELVE (12) MONTHS PRECEDING THE EVENT GIVING RISE TO THE CLAIM.</p>
+
+    <h2>13. Indemnification</h2>
+    <p>You agree to indemnify, defend, and hold harmless Instant Heating and Air LLC and its officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses (including reasonable attorney's fees) arising out of or related to your use of the Platform, your violation of these Terms, or your violation of any third-party rights, including TCPA compliance obligations.</p>
+
+    <h2>14. Termination</h2>
+    <p>We may suspend or terminate your account at any time, with or without notice, if we believe you have violated these Terms or for any other reason at our sole discretion. Upon termination, your right to use the Platform will cease immediately. Sections of these Terms that by their nature should survive termination will survive, including intellectual property, disclaimers, limitation of liability, and indemnification.</p>
+
+    <h2>15. Modifications to Terms</h2>
+    <p>We reserve the right to modify these Terms at any time. When we make changes, we will update the "Effective Date" at the top of this page and, where appropriate, notify you via email or through the Platform. Your continued use of the Platform after any modification constitutes your acceptance of the updated Terms.</p>
+
+    <h2>16. Governing Law and Disputes</h2>
+    <p>These Terms are governed by and construed in accordance with the laws of the State of Texas, without regard to its conflict of laws provisions. Any disputes arising under these Terms shall be resolved in the state or federal courts located in Texas, and you consent to the personal jurisdiction of those courts.</p>
+
+    <h2>17. Severability</h2>
+    <p>If any provision of these Terms is found to be unenforceable or invalid, that provision will be limited or eliminated to the minimum extent necessary, and the remaining provisions will remain in full force and effect.</p>
+
+    <h2>18. Entire Agreement</h2>
+    <p>These Terms, together with our Privacy Policy, constitute the entire agreement between you and Instant Heating and Air LLC regarding your use of the Platform and supersede all prior agreements and understandings.</p>
+
+    <h2>19. Contact Us</h2>
+    <p>If you have any questions about these Terms of Service, please contact us:</p>
+    <p>
+      <strong>Instant Heating and Air LLC (d/b/a ReferralMax)</strong><br />
+      Email: <a href="mailto:marklopez1@gmail.com">marklopez1@gmail.com</a><br />
+      Website: <a href="https://marklopez1-cyber.github.io/referralmax-website/">referralmax-website</a>
+    </p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="assets/ReferralMax_Logo.png" alt="ReferralMax" />
+          <p class="tag">The referral and affiliate platform built for Main Street. Refer. Earn. Succeed.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Product</h5>
+          <a href="index.html#how">How It Works</a>
+          <a href="index.html#features">Features</a>
+          <a href="index.html#pricing">Pricing</a>
+          <a href="https://referralmax.appdepot.net/login">Log In</a>
+        </div>
+        <div class="footer-col">
+          <h5>Get Started</h5>
+          <a href="index.html#cta">Start Free Trial</a>
+          <a href="https://referralmax.appdepot.net/login">Admin Login</a>
+          <a href="mailto:support@referralmax.appdepot.net">Contact Us</a>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 ReferralMax, Inc. All rights reserved.</div>
+        <div>
+          <a href="terms.html" style="opacity:0.75; margin-right: 16px;">Terms</a>
+          <a href="privacy.html" style="opacity:0.75; margin-right: 16px;">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

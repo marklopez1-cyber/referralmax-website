@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — ReferralMax</title>
+  <meta name="description" content="ReferralMax Privacy Policy. Learn how we collect, use, and protect your personal information." />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --blue:  #1E5BA8;
+      --green: #2EB84C;
+      --orange:#F58220;
+      --navy:  #0E2A47;
+      --cloud: #F7F9FC;
+      --slate: #4A5568;
+      --line:  #E4E8EF;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--navy);
+      background: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- NAV ---------- */
+    header.nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: saturate(1.2) blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 76px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo img { height: 44px; width: auto; }
+    .nav-cta { display: flex; gap: 12px; align-items: center; }
+    .btn {
+      display: inline-block; padding: 11px 20px; border-radius: 10px;
+      font-weight: 600; font-size: 15px; transition: all 0.15s ease;
+      border: 1px solid transparent; cursor: pointer; color: inherit; text-decoration: none;
+    }
+    .btn-primary { background: var(--orange); color: #fff; }
+    .btn-primary:hover { background: #da6f10; transform: translateY(-1px); text-decoration: none; }
+    .btn-ghost { color: var(--navy); border: 1px solid var(--line); background: #fff; }
+    .btn-ghost:hover { border-color: var(--blue); color: var(--blue); text-decoration: none; }
+
+    /* ---------- PAGE CONTENT ---------- */
+    .page-header {
+      background: var(--cloud);
+      padding: 60px 0 40px;
+      border-bottom: 1px solid var(--line);
+    }
+    .page-header h1 {
+      font-size: 42px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px;
+    }
+    .page-header .effective {
+      font-size: 15px; color: var(--slate);
+    }
+
+    .content {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 50px 24px 80px;
+    }
+    .content h2 {
+      font-size: 22px; font-weight: 700; margin-top: 40px; margin-bottom: 14px;
+      color: var(--navy);
+    }
+    .content h3 {
+      font-size: 17px; font-weight: 600; margin-top: 28px; margin-bottom: 10px;
+      color: var(--navy);
+    }
+    .content p {
+      font-size: 15.5px; line-height: 1.7; color: var(--slate); margin-bottom: 16px;
+    }
+    .content ul {
+      margin: 0 0 16px 24px; color: var(--slate); font-size: 15.5px; line-height: 1.7;
+    }
+    .content ul li { margin-bottom: 6px; }
+    .content strong { color: var(--navy); }
+
+    /* ---------- FOOTER ---------- */
+    footer { background: var(--navy); color: #fff; padding: 60px 0 30px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-grid img { height: 40px; margin-bottom: 16px; background: #fff; padding: 8px 12px; border-radius: 10px; }
+    .footer-grid p.tag { font-size: 14px; opacity: 0.75; max-width: 320px; }
+    .footer-col h5 { font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; opacity: 0.9; }
+    .footer-col a { display: block; font-size: 14px; opacity: 0.75; padding: 4px 0; color: #fff; text-decoration: none; }
+    .footer-col a:hover { opacity: 1; text-decoration: none; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+      font-size: 13px; opacity: 0.65;
+    }
+    .footer-bottom a { color: #fff; text-decoration: none; }
+    .footer-bottom a:hover { text-decoration: none; opacity: 1; }
+
+    @media (max-width: 860px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .nav-inner { height: 60px; }
+      .logo img { height: 34px; }
+      .nav-cta .btn { padding: 8px 12px; font-size: 13px; }
+      .page-header { padding: 40px 0 28px; }
+      .page-header h1 { font-size: 28px; }
+      .content { padding: 30px 24px 60px; }
+      .content h2 { font-size: 19px; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/ReferralMax_Logo.png" alt="ReferralMax" />
+      </a>
+      <div class="nav-cta">
+        <a href="index.html" class="btn btn-ghost">Home</a>
+        <a href="https://referralmax.appdepot.net/login" class="btn btn-primary">Log In</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Privacy Policy</h1>
+      <p class="effective">Effective Date: April 18, 2026</p>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <p>Instant Heating and Air LLC, doing business as <strong>ReferralMax</strong> ("we," "us," or "our"), is committed to protecting the privacy of our users. This Privacy Policy describes how we collect, use, disclose, and safeguard your information when you use the ReferralMax platform, including our website at <strong>referralmax.appdepot.net</strong> and any associated subdomains, mobile applications, and services (collectively, the "Platform").</p>
+
+    <p>By accessing or using the Platform, you agree to the terms of this Privacy Policy. If you do not agree with these terms, please do not access or use the Platform.</p>
+
+    <h2>1. Information We Collect</h2>
+
+    <h3>1.1 Personal Information You Provide</h3>
+    <p>We collect information that you voluntarily provide when you register for an account, submit a referral, or interact with the Platform, including:</p>
+    <ul>
+      <li>Full name (first and last)</li>
+      <li>Email address</li>
+      <li>Phone number (including mobile number for SMS communications)</li>
+      <li>Business or company name</li>
+      <li>Mailing address</li>
+      <li>Payment and reward redemption details</li>
+    </ul>
+
+    <h3>1.2 Information Collected Automatically</h3>
+    <p>When you access the Platform, we may automatically collect certain information, including:</p>
+    <ul>
+      <li>IP address and approximate geolocation</li>
+      <li>Browser type, operating system, and device identifiers</li>
+      <li>Pages viewed, features used, and actions taken on the Platform</li>
+      <li>Referring URLs and search terms</li>
+      <li>Date and time of access</li>
+      <li>Cookies and similar tracking technologies</li>
+    </ul>
+
+    <h3>1.3 Information from Third Parties</h3>
+    <p>We may receive information about you from third parties, including business partners, referral sources, payment processors (such as Tremendous), and identity verification services.</p>
+
+    <h2>2. How We Use Your Information</h2>
+    <p>We use the information we collect for the following purposes:</p>
+    <ul>
+      <li><strong>Platform Operations:</strong> To create and manage your account, process referrals, issue rewards, and provide customer support.</li>
+      <li><strong>Communications:</strong> To send you referral notifications, reward confirmations, account updates, and service-related messages via email and SMS/text message.</li>
+      <li><strong>Marketing:</strong> To send promotional messages about ReferralMax features, offers, and partner promotions, with your prior express written consent.</li>
+      <li><strong>Analytics and Improvement:</strong> To analyze usage patterns, improve the Platform, and develop new features.</li>
+      <li><strong>Legal Compliance:</strong> To comply with applicable laws, regulations, and legal processes.</li>
+      <li><strong>Security:</strong> To detect, prevent, and respond to fraud, abuse, and security incidents.</li>
+    </ul>
+
+    <h2>3. SMS/Text Messaging</h2>
+    <p>ReferralMax uses SMS/text messaging to deliver referral notifications, referral status updates, and reward notifications to users of the Platform. By opting in to receive text messages, you acknowledge and agree to the following:</p>
+    <ul>
+      <li><strong>Consent:</strong> You provide prior express written consent to receive text messages from ReferralMax and/or participating businesses on the Platform by completing a web-based opt-in form, checking an unchecked consent checkbox, or replying YES to an initial referral message.</li>
+      <li><strong>Message Frequency:</strong> Message frequency varies based on referral activity. Typical usage is 1–5 messages per month per recipient.</li>
+      <li><strong>Message and Data Rates:</strong> Standard message and data rates may apply depending on your mobile carrier and plan.</li>
+      <li><strong>Opt-Out:</strong> You may opt out of receiving text messages at any time by replying <strong>STOP</strong> to any message. After opting out, you will receive a one-time confirmation message and no further texts will be sent.</li>
+      <li><strong>Help:</strong> For assistance, reply <strong>HELP</strong> to any message or contact us at <a href="mailto:marklopez1@gmail.com">marklopez1@gmail.com</a>.</li>
+      <li><strong>No Purchase Required:</strong> Consent to receive text messages is not a condition of any purchase or use of the Platform.</li>
+      <li><strong>Carriers:</strong> Supported carriers include, but are not limited to: AT&T, T-Mobile, Verizon, Sprint, and most other major U.S. mobile carriers. Carriers are not liable for delayed or undelivered messages.</li>
+    </ul>
+
+    <h2>4. How We Share Your Information</h2>
+    <p>We do not sell, rent, or trade your personal information to third parties for their marketing purposes. We may share your information in the following circumstances:</p>
+    <ul>
+      <li><strong>With Participating Businesses:</strong> When you submit or receive a referral through a business's referral program on ReferralMax, that business may receive your name, contact information, and referral details necessary to fulfill the referral.</li>
+      <li><strong>Service Providers:</strong> We share information with third-party service providers who perform services on our behalf, including cloud hosting (Supabase), email delivery, SMS messaging (Twilio), payment processing (Tremendous), and analytics.</li>
+      <li><strong>Legal Requirements:</strong> We may disclose your information if required by law, regulation, legal process, or governmental request.</li>
+      <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets, your information may be transferred to the acquiring entity.</li>
+      <li><strong>With Your Consent:</strong> We may share your information with your explicit consent.</li>
+    </ul>
+
+    <h2>5. Data Security</h2>
+    <p>We implement industry-standard technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These include encryption in transit (TLS/SSL), secure database storage, access controls, and regular security assessments. However, no method of electronic transmission or storage is 100% secure, and we cannot guarantee absolute security.</p>
+
+    <h2>6. Data Retention</h2>
+    <p>We retain your personal information for as long as your account is active or as needed to provide you services, comply with legal obligations, resolve disputes, and enforce our agreements. When your information is no longer needed, we will securely delete or anonymize it.</p>
+
+    <h2>7. Your Rights and Choices</h2>
+    <p>Depending on your jurisdiction, you may have the following rights regarding your personal information:</p>
+    <ul>
+      <li><strong>Access:</strong> Request a copy of the personal information we hold about you.</li>
+      <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information.</li>
+      <li><strong>Deletion:</strong> Request deletion of your personal information, subject to legal obligations.</li>
+      <li><strong>Opt-Out of Communications:</strong> Unsubscribe from marketing emails by clicking the "unsubscribe" link or opt out of SMS by replying STOP.</li>
+      <li><strong>Do Not Track:</strong> The Platform does not currently respond to "Do Not Track" browser signals.</li>
+    </ul>
+    <p>To exercise any of these rights, please contact us at <a href="mailto:marklopez1@gmail.com">marklopez1@gmail.com</a>.</p>
+
+    <h2>8. Cookies and Tracking Technologies</h2>
+    <p>We use cookies, web beacons, and similar technologies to enhance your experience, analyze usage, and deliver relevant content. You can control cookie preferences through your browser settings. Disabling cookies may limit certain features of the Platform.</p>
+
+    <h2>9. Children's Privacy</h2>
+    <p>The Platform is not intended for individuals under the age of 18. We do not knowingly collect personal information from children. If we learn that we have collected information from a child under 18, we will promptly delete that information. If you believe a child has provided us with personal information, please contact us at <a href="mailto:marklopez1@gmail.com">marklopez1@gmail.com</a>.</p>
+
+    <h2>10. Third-Party Links</h2>
+    <p>The Platform may contain links to third-party websites or services. We are not responsible for the privacy practices of those third parties. We encourage you to review the privacy policies of any third-party sites you visit.</p>
+
+    <h2>11. Changes to This Privacy Policy</h2>
+    <p>We may update this Privacy Policy from time to time. When we make changes, we will update the "Effective Date" at the top of this page and, where appropriate, notify you via email or through the Platform. Your continued use of the Platform after any changes constitutes your acceptance of the updated policy.</p>
+
+    <h2>12. Contact Us</h2>
+    <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
+    <p>
+      <strong>Instant Heating and Air LLC (d/b/a ReferralMax)</strong><br />
+      Email: <a href="mailto:marklopez1@gmail.com">marklopez1@gmail.com</a><br />
+      Website: <a href="https://marklopez1-cyber.github.io/referralmax-website/">referralmax-website</a>
+    </p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="assets/ReferralMax_Logo.png" alt="ReferralMax" />
+          <p class="tag">The referral and affiliate platform built for Main Street. Refer. Earn. Succeed.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Product</h5>
+          <a href="index.html#how">How It Works</a>
+          <a href="index.html#features">Features</a>
+          <a href="index.html#pricing">Pricing</a>
+          <a href="https://referralmax.appdepot.net/login">Log In</a>
+        </div>
+        <div class="footer-col">
+          <h5>Get Started</h5>
+          <a href="index.html#cta">Start Free Trial</a>
+          <a href="https://referralmax.appdepot.net/login">Admin Login</a>
+          <a href="mailto:support@referralmax.appdepot.net">Contact Us</a>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 ReferralMax, Inc. All rights reserved.</div>
+        <div>
+          <a href="terms.html" style="opacity:0.75; margin-right: 16px;">Terms</a>
+          <a href="privacy.html" style="opacity:0.75; margin-right: 16px;">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
