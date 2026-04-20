@@ -140,8 +140,8 @@ Below is complete, copy-paste-ready verbiage for every major section. The site i
 ### 3.12 Pricing Section
 Three tiers, flat monthly, no per-referral surcharge.
 
-- **Starter — $49/mo.** Up to 250 referrals tracked/month, 1 program, email support, core integrations, digital card rewards enabled.
-- **Growth — $149/mo.** *(Most Popular)* Unlimited referrals, up to 3 programs, affiliate portal, custom branding, priority support, API access.
+- **Starter — $89/mo.** Up to 250 referrals tracked/month, 1 program, email support, core integrations, digital card rewards enabled.
+- **Growth — $189/mo.** *(Most Popular)* Unlimited referrals, up to 3 programs, affiliate portal, custom branding, priority support, API access.
 - **Pro — $349/mo.** Unlimited programs, multi-location support, dedicated success manager, advanced fraud controls, SSO, white-label domain.
 
 Under pricing: *"All plans include instant digital credit card reward issuance. Reward funds are pre-funded by the business and held in an FDIC-insured program account."*
@@ -254,7 +254,7 @@ Launch with 6 cornerstone blog posts:
 4. `/for-businesses` — Segmented landing with ROI calculator component.
 5. `/for-advocates` — Advocate-first narrative, digital-card showcase, Apple Wallet mock.
 6. `/for-affiliates` — Affiliate portal preview and creative asset library preview.
-7. `/pricing` — Three-tier table (Starter $49, Growth $149, Pro $349), feature comparison matrix, billing FAQ, enterprise contact form.
+7. `/pricing` — Three-tier table (Starter $89, Growth $189, Pro $349), feature comparison matrix, billing FAQ, enterprise contact form.
 8. `/security` — Trust page covering card issuance, FDIC, SOC 2, PCI, fraud protection.
 9. `/resources` — Blog index.
 10. `/resources/[slug]` — MDX blog posts (seed with the 6 cornerstone post titles listed below; generate thoughtful 800–1,200-word drafts for each).
@@ -335,7 +335,7 @@ Ask me any clarifying questions *before* scaffolding. Otherwise, proceed.
 
 ## 7. Open Decisions for Mark (before we hand this to Claude)
 
-1. **Final pricing tiers** — confirm Starter/Growth/Pro at $49/$149/$349, or adjust.
+1. **Final pricing tiers** — confirm Starter/Growth/Pro at $89/$189/$349, or adjust.
 2. **Card issuer partner** — do you already have a BIN sponsor (Marqeta, Lithic, Stripe Issuing, Unit, Galileo)? The Security page copy changes slightly based on who.
 3. **Domain** — referralmax.com? referralmax.io? Confirm so we can set up canonical tags and OG metadata correctly.
 4. **Real photography budget** — greenlight a small-business photography shoot, or start with high-end stock (Eleven, Stocksy) plus illustration?
