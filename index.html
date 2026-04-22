@@ -626,7 +626,7 @@
         </div>
         <div class="hero-trust">
           <span>No credit card required</span>
-          <span>Launch in under 15 minutes</span>
+          <span>Same-day setup</span>
           <span>Cancel anytime</span>
         </div>
       </div>
@@ -1062,48 +1062,84 @@
   <section id="cta" class="cta-band" style="padding: 80px 24px;">
     <div class="container">
       <h2>Your next best customer is one referral away.</h2>
-      <p>Launch your program in under 15 minutes. The first 14 days are on us.</p>
+      <p>Tell us about your business and we'll reach out to get your 14-day free trial set up.</p>
 
       <div class="signup-form-card">
         <h3>Start your free trial</h3>
-        <p class="form-sub">No credit card required. Set up in minutes.</p>
-        <form id="signupForm" onsubmit="handleSignup(event)">
-          <div class="form-row form-row-half">
-            <div>
-              <label for="firstName">First name</label>
-              <input type="text" id="firstName" placeholder="Mark" required />
+        <p class="form-sub">No credit card required. We'll get you going the same day.</p>
+        <div id="signupFormWrap">
+          <form id="signupForm" onsubmit="handleSignup(event)">
+            <!-- Honeypot: invisible to humans, a tempting empty field for bots. -->
+            <div style="position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+              <label for="website_url">Website (do not fill)</label>
+              <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off" />
             </div>
-            <div>
-              <label for="lastName">Last name</label>
-              <input type="text" id="lastName" placeholder="Lopez" required />
+            <div class="form-row form-row-half">
+              <div>
+                <label for="firstName">First name</label>
+                <input type="text" id="firstName" placeholder="Mark" required />
+              </div>
+              <div>
+                <label for="lastName">Last name</label>
+                <input type="text" id="lastName" placeholder="Lopez" required />
+              </div>
             </div>
-          </div>
-          <div class="form-row">
-            <label for="email">Work email</label>
-            <input type="email" id="email" placeholder="you@company.com" required />
-          </div>
-          <div class="form-row">
-            <label for="company">Company name</label>
-            <input type="text" id="company" placeholder="Your Business Name" required />
-          </div>
-          <div class="form-row">
-            <label for="industry">Industry</label>
-            <select id="industry">
-              <option value="">Select your industry</option>
-              <option value="hvac">HVAC / Plumbing / Electrical</option>
-              <option value="health">Health, Wellness &amp; Beauty</option>
-              <option value="retail">Retail &amp; E-commerce</option>
-              <option value="professional">Professional Services</option>
-              <option value="home">Home Services &amp; Cleaning</option>
-              <option value="fitness">Fitness &amp; Gyms</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <button type="submit" class="form-submit">Start Free 14-Day Trial</button>
-          <p class="form-note">By signing up, you agree to our <a href="terms/" style="color:var(--blue);text-decoration:underline;">Terms of Service</a> and <a href="privacy/" style="color:var(--blue);text-decoration:underline;">Privacy Policy</a>. Your phone number will never be shared with third parties for marketing purposes. Msg &amp; data rates may apply. Reply STOP to opt out.</p>
-        </form>
-        <div class="form-divider">or</div>
-        <a href="https://referralmax.appdepot.net/login" class="form-alt-btn">Already have an account? Log in</a>
+            <div class="form-row">
+              <label for="email">Work email</label>
+              <input type="email" id="email" placeholder="you@company.com" required />
+            </div>
+            <div class="form-row">
+              <label for="phone">Phone number</label>
+              <input type="tel" id="phone" placeholder="(555) 123-4567" required />
+            </div>
+            <div class="form-row">
+              <label for="company">Company name</label>
+              <input type="text" id="company" placeholder="Your Business Name" required />
+            </div>
+            <div class="form-row">
+              <label for="industry">Industry</label>
+              <select id="industry">
+                <option value="">Select your industry</option>
+                <option value="hvac">HVAC / Plumbing / Electrical</option>
+                <option value="health">Health, Wellness &amp; Beauty</option>
+                <option value="retail">Retail &amp; E-commerce</option>
+                <option value="professional">Professional Services</option>
+                <option value="home">Home Services &amp; Cleaning</option>
+                <option value="fitness">Fitness &amp; Gyms</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="source">How did you hear about us? <span style="color:var(--slate);font-weight:400;">(optional)</span></label>
+              <select id="source">
+                <option value="">Select one</option>
+                <option value="google">Google search</option>
+                <option value="referral">Referral from a friend or colleague</option>
+                <option value="linkedin">LinkedIn</option>
+                <option value="social_other">Social media (other)</option>
+                <option value="event">Trade show or industry event</option>
+                <option value="publication">Industry publication</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <button type="submit" class="form-submit" id="submitBtn">Start Free 14-Day Trial</button>
+            <p class="form-note">By signing up, you agree to our <a href="terms/" style="color:var(--blue);text-decoration:underline;">Terms of Service</a> and <a href="privacy/" style="color:var(--blue);text-decoration:underline;">Privacy Policy</a>. Your phone number will never be shared with third parties for marketing purposes.</p>
+          </form>
+          <div class="form-divider">or</div>
+          <a href="https://referralmax.appdepot.net/login" class="form-alt-btn">Already have an account? Log in</a>
+        </div>
+
+        <!-- Success state, hidden until form submits successfully. -->
+        <div id="signupSuccess" style="display:none; text-align:center; padding: 20px 8px;">
+          <div style="width:56px; height:56px; border-radius:50%; background:#dcfce7; display:flex; align-items:center; justify-content:center; margin: 0 auto 16px; color:var(--green); font-size:30px;">✓</div>
+          <h3 style="color:var(--navy); margin-bottom: 10px;">Request received!</h3>
+          <p style="color:var(--slate); font-size: 15px; margin-bottom: 8px;">
+            Thanks, <strong id="successName">there</strong>. We'll reach out <strong>today during business hours</strong> to get your trial set up.
+          </p>
+          <p style="color:var(--slate); font-size: 14px;">
+            We've also sent a confirmation email to <strong id="successEmail"></strong> — check your inbox (and spam folder, just in case).
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -1116,16 +1152,44 @@
       event.target.classList.add('active');
     }
 
-    function handleSignup(e) {
+    const TRIAL_REQUEST_URL = 'https://api.referralmax.appdepot.net/api/public/trial-request';
+
+    async function handleSignup(e) {
       e.preventDefault();
-      const params = new URLSearchParams({
-        first: document.getElementById('firstName').value,
-        last: document.getElementById('lastName').value,
-        email: document.getElementById('email').value,
-        company: document.getElementById('company').value,
-        industry: document.getElementById('industry').value
-      });
-      window.location.href = 'https://referralmax.appdepot.net/login?signup=true&' + params.toString();
+      const btn = document.getElementById('submitBtn');
+      const originalLabel = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      const payload = {
+        firstName: document.getElementById('firstName').value.trim(),
+        lastName:  document.getElementById('lastName').value.trim(),
+        email:     document.getElementById('email').value.trim(),
+        phone:     document.getElementById('phone').value.trim(),
+        company:   document.getElementById('company').value.trim(),
+        industry:  document.getElementById('industry').value,
+        source:    document.getElementById('source').value,
+        website_url: document.getElementById('website_url').value, // honeypot
+      };
+
+      try {
+        const res = await fetch(TRIAL_REQUEST_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error || 'Something went wrong. Please try again.');
+
+        document.getElementById('successName').textContent = payload.firstName || 'there';
+        document.getElementById('successEmail').textContent = payload.email;
+        document.getElementById('signupFormWrap').style.display = 'none';
+        document.getElementById('signupSuccess').style.display = 'block';
+      } catch (err) {
+        alert(err.message || 'Something went wrong — please email marklopez1@gmail.com and we\'ll help you get set up.');
+        btn.disabled = false;
+        btn.textContent = originalLabel;
+      }
     }
   </script>
 
