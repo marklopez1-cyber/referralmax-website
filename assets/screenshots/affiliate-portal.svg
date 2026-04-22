@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" font-family="system-ui,-apple-system,sans-serif">
+  <defs>
+    <filter id="s2" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="#0E2A47" flood-opacity="0.08"/>
+    </filter>
+    <linearGradient id="codeBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E8EEF7"/>
+      <stop offset="1" stop-color="#F7F9FC"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="380" fill="#F7F9FC"/>
+  <!-- Top bar -->
+  <rect x="0" y="0" width="600" height="52" fill="#FFF"/>
+  <line x1="0" y1="52" x2="600" y2="52" stroke="#E2E8F0"/>
+  <text x="22" y="32" fill="#0E2A47" font-size="14" font-weight="700">Welcome back, Sarah! 👋</text>
+  <circle cx="568" cy="26" r="14" fill="#F58220"/>
+  <text x="568" y="30" fill="#FFF" font-size="11" font-weight="700" text-anchor="middle">SJ</text>
+
+  <!-- Stat cards -->
+  <g filter="url(#s2)">
+    <rect x="22" y="72" width="175" height="70" rx="10" fill="#FFF"/>
+    <text x="36" y="91" fill="#6b7280" font-size="9" font-weight="600" letter-spacing="0.8">TOTAL EARNINGS</text>
+    <text x="36" y="120" fill="#2EB84C" font-size="22" font-weight="800">$1,847</text>
+    <text x="36" y="134" fill="#9ca3af" font-size="9">All time</text>
+
+    <rect x="212" y="72" width="175" height="70" rx="10" fill="#FFF"/>
+    <text x="226" y="91" fill="#6b7280" font-size="9" font-weight="600" letter-spacing="0.8">TOTAL REFERRALS</text>
+    <text x="226" y="120" fill="#1E5BA8" font-size="22" font-weight="800">34</text>
+    <text x="226" y="134" fill="#9ca3af" font-size="9">23 converted · 68% conv</text>
+
+    <rect x="402" y="72" width="175" height="70" rx="10" fill="#FFF"/>
+    <text x="416" y="91" fill="#6b7280" font-size="9" font-weight="600" letter-spacing="0.8">PENDING REWARD</text>
+    <text x="416" y="120" fill="#F58220" font-size="22" font-weight="800">$400</text>
+    <text x="416" y="134" fill="#9ca3af" font-size="9">In progress</text>
+  </g>
+
+  <!-- Code card -->
+  <g filter="url(#s2)">
+    <rect x="22" y="160" width="555" height="198" rx="12" fill="#FFF"/>
+    <text x="36" y="184" fill="#0E2A47" font-size="13" font-weight="700">My Referral Code</text>
+
+    <!-- QR placeholder -->
+    <rect x="36" y="200" width="140" height="140" rx="8" fill="#FFF" stroke="#E2E8F0"/>
+    <rect x="48" y="212" width="116" height="116" fill="#0E2A47"/>
+    <g fill="#FFF">
+      <rect x="54" y="218" width="20" height="20"/>
+      <rect x="140" y="218" width="20" height="20"/>
+      <rect x="54" y="304" width="20" height="20"/>
+      <rect x="80" y="226" width="6" height="6"/>
+      <rect x="100" y="232" width="8" height="4"/>
+      <rect x="116" y="226" width="10" height="10"/>
+      <rect x="80" y="244" width="4" height="4"/>
+      <rect x="94" y="244" width="16" height="6"/>
+      <rect x="118" y="250" width="6" height="6"/>
+      <rect x="86" y="260" width="14" height="4"/>
+      <rect x="106" y="262" width="4" height="10"/>
+      <rect x="120" y="268" width="8" height="6"/>
+      <rect x="86" y="278" width="4" height="12"/>
+      <rect x="96" y="280" width="10" height="4"/>
+      <rect x="112" y="286" width="16" height="6"/>
+      <rect x="130" y="300" width="4" height="4"/>
+      <rect x="140" y="308" width="6" height="10"/>
+      <rect x="110" y="316" width="4" height="4"/>
+      <rect x="122" y="312" width="4" height="8"/>
+    </g>
+
+    <!-- Code + buttons -->
+    <rect x="192" y="200" width="280" height="50" rx="8" fill="url(#codeBg)"/>
+    <text x="206" y="218" fill="#6b7280" font-size="9" font-weight="600" letter-spacing="0.8">YOUR CODE</text>
+    <text x="206" y="242" fill="#0E2A47" font-size="22" font-weight="800" letter-spacing="2">SARJOH742</text>
+    <rect x="484" y="200" width="80" height="50" rx="8" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="524" y="232" fill="#0E2A47" font-size="11" font-weight="600" text-anchor="middle">📋 Copy</text>
+
+    <!-- Discount / Reward -->
+    <rect x="192" y="260" width="186" height="58" rx="8" fill="#F0FDF4"/>
+    <text x="206" y="278" fill="#6b7280" font-size="9" font-weight="600" letter-spacing="0.8">CONTACTS GET</text>
+    <text x="206" y="302" fill="#155724" font-size="14" font-weight="700">$250 off AC install</text>
+    <text x="206" y="315" fill="#166534" font-size="9">10% off AC tune-up · $75 off plumbing</text>
+
+    <rect x="386" y="260" width="186" height="58" rx="8" fill="#E8EEF7"/>
+    <text x="400" y="278" fill="#6b7280" font-size="9" font-weight="600" letter-spacing="0.8">YOU EARN</text>
+    <text x="400" y="302" fill="#0E2A47" font-size="14" font-weight="700">$400 / AC install</text>
+    <text x="400" y="315" fill="#4A5568" font-size="9">$50 tune-up · $100 plumbing</text>
+
+    <!-- Share buttons -->
+    <rect x="192" y="328" width="75" height="22" rx="5" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="230" y="343" fill="#0E2A47" font-size="10" font-weight="600" text-anchor="middle">💬 Text</text>
+    <rect x="275" y="328" width="75" height="22" rx="5" fill="#FFF" stroke="#E2E8F0"/>
+    <text x="313" y="343" fill="#0E2A47" font-size="10" font-weight="600" text-anchor="middle">✉️ Email</text>
+    <rect x="358" y="328" width="80" height="22" rx="5" fill="#0E2A47"/>
+    <text x="398" y="343" fill="#FFF" font-size="10" font-weight="600" text-anchor="middle">🔗 Copy Link</text>
+  </g>
+</svg>
