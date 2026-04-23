@@ -5,10 +5,32 @@
 (function () {
   'use strict';
 
-  const API_BASE = 'https://api.referralmax.appdepot.net';
+  const API_BASE = 'https://api.referralmax.ai';
   const SCREENSHOT_BASE = 'assets/screenshots/';
   const STORAGE_KEY = 'rmx_chat_v1';
   const STORAGE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
+
+  // Also capture the referral code here so the widget works even on pages
+  // where the main signup form's capture script hasn't loaded yet.
+  (function captureRefCode() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const ref = params.get('ref');
+      if (ref && /^[A-Z0-9-]{4,40}$/i.test(ref)) {
+        localStorage.setItem('rmx_ref', JSON.stringify({ code: ref.toUpperCase(), ts: Date.now() }));
+      }
+    } catch { /* ignore */ }
+  })();
+
+  function getStoredReferralCode() {
+    try {
+      const raw = localStorage.getItem('rmx_ref');
+      if (!raw) return null;
+      const data = JSON.parse(raw);
+      if (!data.ts || Date.now() - data.ts > 30 * 24 * 60 * 60 * 1000) return null;
+      return data.code || null;
+    } catch { return null; }
+  }
 
   const WELCOME = {
     role: 'assistant',
@@ -205,7 +227,7 @@
       const res = await fetch(API_BASE + '/api/public/chat/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, conversationSummary: excerpt }),
+        body: JSON.stringify({ ...data, conversationSummary: excerpt, referredByCode: getStoredReferralCode() }),
       });
       const body = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(body.error || 'Could not send');

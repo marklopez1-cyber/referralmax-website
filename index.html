@@ -5,19 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ReferralMax — Refer. Earn. Succeed.</title>
   <meta name="description" content="ReferralMax is the referral and affiliate platform for small and mid-sized businesses. Launch a branded referral program in minutes and reward advocates with instant digital credit cards." />
-  <link rel="canonical" href="https://get.referralmax.appdepot.net/" />
+  <link rel="canonical" href="https://referralmax.ai/" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
 
   <!-- Open Graph / social share -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://get.referralmax.appdepot.net/" />
+  <meta property="og:url" content="https://referralmax.ai/" />
   <meta property="og:title" content="ReferralMax — Refer. Earn. Succeed." />
   <meta property="og:description" content="The referral and affiliate platform built for small businesses. Instant digital credit card rewards for every advocate." />
-  <meta property="og:image" content="https://get.referralmax.appdepot.net/assets/ReferralMax_Logo.png" />
+  <meta property="og:image" content="https://referralmax.ai/assets/ReferralMax_Logo.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="ReferralMax — Refer. Earn. Succeed." />
   <meta name="twitter:description" content="The referral and affiliate platform built for small businesses. Instant digital credit card rewards for every advocate." />
-  <meta name="twitter:image" content="https://get.referralmax.appdepot.net/assets/ReferralMax_Logo.png" />
+  <meta name="twitter:image" content="https://referralmax.ai/assets/ReferralMax_Logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -605,7 +605,7 @@
         </ul>
       </nav>
       <div class="nav-cta">
-        <a href="https://referralmax.appdepot.net/login" class="btn btn-ghost">Log In</a>
+        <a href="https://admin.referralmax.ai/login" class="btn btn-ghost">Log In</a>
         <a href="#cta" class="btn btn-primary">Start Free Trial</a>
       </div>
     </div>
@@ -765,7 +765,7 @@
         <div class="feat">
           <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
           <h4>Branded for You</h4>
-          <p>Custom colors, logo, and branded email templates on your own referral portal at yourcompany.referralmax.appdepot.net.</p>
+          <p>Custom colors, logo, and branded email templates on your own referral portal at yourcompany.referralmax.ai.</p>
         </div>
       </div>
     </div>
@@ -1127,7 +1127,7 @@
             <p class="form-note">By signing up, you agree to our <a href="terms/" style="color:var(--blue);text-decoration:underline;">Terms of Service</a> and <a href="privacy/" style="color:var(--blue);text-decoration:underline;">Privacy Policy</a>. Your phone number will never be shared with third parties for marketing purposes.</p>
           </form>
           <div class="form-divider">or</div>
-          <a href="https://referralmax.appdepot.net/login" class="form-alt-btn">Already have an account? Log in</a>
+          <a href="https://admin.referralmax.ai/login" class="form-alt-btn">Already have an account? Log in</a>
         </div>
 
         <!-- Success state, hidden until form submits successfully. -->
@@ -1153,7 +1153,35 @@
       event.target.classList.add('active');
     }
 
-    const TRIAL_REQUEST_URL = 'https://api.referralmax.appdepot.net/api/public/trial-request';
+    const TRIAL_REQUEST_URL = 'https://api.referralmax.ai/api/public/trial-request';
+
+    // ── Partner-program referral code capture ─────────────────────
+    // If someone lands on the site via ?ref=CODE, store it for 30 days so
+    // whenever they eventually submit the trial-request form we can attribute
+    // the conversion to the referring company.
+    (function captureReferralCode() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const ref = params.get('ref');
+        if (ref && /^[A-Z0-9-]{4,40}$/i.test(ref)) {
+          localStorage.setItem('rmx_ref', JSON.stringify({ code: ref.toUpperCase(), ts: Date.now() }));
+        }
+      } catch { /* localStorage disabled — fine, no-op */ }
+    })();
+
+    function getStoredReferralCode() {
+      try {
+        const raw = localStorage.getItem('rmx_ref');
+        if (!raw) return null;
+        const data = JSON.parse(raw);
+        const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
+        if (!data.ts || Date.now() - data.ts > THIRTY_DAYS) {
+          localStorage.removeItem('rmx_ref');
+          return null;
+        }
+        return data.code || null;
+      } catch { return null; }
+    }
 
     async function handleSignup(e) {
       e.preventDefault();
@@ -1171,6 +1199,7 @@
         industry:  document.getElementById('industry').value,
         source:    document.getElementById('source').value,
         website_url: document.getElementById('website_url').value, // honeypot
+        referredByCode: getStoredReferralCode(),
       };
 
       try {
@@ -1207,13 +1236,13 @@
           <a href="#how">How It Works</a>
           <a href="#features">Features</a>
           <a href="#pricing">Pricing</a>
-          <a href="https://referralmax.appdepot.net/login">Log In</a>
+          <a href="https://admin.referralmax.ai/login">Log In</a>
         </div>
         <div class="footer-col">
           <h5>Get Started</h5>
           <a href="#cta">Start Free Trial</a>
-          <a href="https://referralmax.appdepot.net/login">Admin Login</a>
-          <a href="mailto:support@referralmax.appdepot.net">Contact Us</a>
+          <a href="https://admin.referralmax.ai/login">Admin Login</a>
+          <a href="mailto:support@referralmax.ai">Contact Us</a>
         </div>
         <div class="footer-col">
           <h5>Platform</h5>
