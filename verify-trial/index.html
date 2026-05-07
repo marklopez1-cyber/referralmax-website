@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verify your trial — ReferralMax</title>
+  <meta name="description" content="Confirm your email and complete your ReferralMax trial signup." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="../assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --blue:  #1E5BA8;
+      --green: #2EB84C;
+      --orange:#F58220;
+      --navy:  #0E2A47;
+      --cloud: #F7F9FC;
+      --slate: #4A5568;
+      --line:  #E4E8EF;
+      --red:   #DC2626;
+      --amber: #B45309;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--navy);
+      background: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- NAV ---------- */
+    header.nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: saturate(1.2) blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo img { height: 44px; width: auto; }
+    .nav-cta { display: flex; gap: 12px; align-items: center; }
+    .btn {
+      display: inline-block; padding: 11px 20px; border-radius: 10px;
+      font-weight: 600; font-size: 15px; transition: all 0.15s ease;
+      border: 1px solid transparent; cursor: pointer; color: inherit; text-decoration: none;
+    }
+    .btn-primary { background: var(--orange); color: #fff; }
+    .btn-primary:hover { background: #da6f10; transform: translateY(-1px); text-decoration: none; }
+    .btn-ghost { color: var(--navy); border: 1px solid var(--line); background: #fff; }
+    .btn-ghost:hover { border-color: var(--blue); color: var(--blue); text-decoration: none; }
+
+    /* ---------- PAGE LAYOUT ---------- */
+    .page {
+      background: var(--cloud);
+      min-height: calc(100vh - 76px);
+      padding: 60px 24px 80px;
+    }
+    .card-wrap { max-width: 580px; margin: 0 auto; }
+
+    /* Step indicator */
+    .steps {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      margin-bottom: 28px; font-size: 13px; color: var(--slate);
+    }
+    .step-pill {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 14px; border-radius: 999px;
+      background: #fff; border: 1px solid var(--line);
+    }
+    .step-pill.done { background: #dcfce7; border-color: #bbf7d0; color: #166534; }
+    .step-pill.active { background: #dbeafe; border-color: #bfdbfe; color: var(--blue); font-weight: 600; }
+    .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--line); color: var(--navy); font-size: 12px; font-weight: 700;
+    }
+    .step-pill.done .step-num { background: var(--green); color: #fff; }
+    .step-pill.active .step-num { background: var(--blue); color: #fff; }
+
+    /* Card shared style (matches index.html .signup-form-card) */
+    .card {
+      background: #fff; border-radius: 18px; padding: 40px 36px;
+      box-shadow: 0 30px 60px -20px rgba(14,42,71,0.2);
+      text-align: left;
+    }
+    .card h1 { font-size: 26px; font-weight: 800; color: var(--navy); margin-bottom: 8px; letter-spacing: -0.3px; }
+    .card .lead { font-size: 15px; color: var(--slate); margin-bottom: 24px; }
+
+    /* Form */
+    .form-row { margin-bottom: 16px; }
+    .form-row label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 5px; }
+    .form-row input, .form-row select {
+      width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px;
+      font-size: 15px; font-family: inherit; color: var(--navy); background: #fff;
+      transition: border-color 0.15s ease;
+    }
+    .form-row input:focus, .form-row select:focus { outline: none; border-color: var(--blue); }
+    .form-row input:disabled, .form-row select:disabled {
+      background: var(--cloud); color: var(--slate); cursor: not-allowed;
+    }
+    .form-grid-3 { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; }
+    .form-submit {
+      width: 100%; padding: 14px; border: none; border-radius: 10px;
+      background: var(--orange); color: #fff; font-size: 16px; font-weight: 700;
+      cursor: pointer; transition: all 0.15s ease; font-family: inherit; margin-top: 8px;
+    }
+    .form-submit:hover:not(:disabled) { background: #da6f10; transform: translateY(-1px); }
+    .form-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+    .form-note { font-size: 12px; color: var(--slate); text-align: center; margin-top: 12px; }
+
+    /* States: spinner / icons */
+    .spinner {
+      width: 44px; height: 44px; margin: 8px auto 16px;
+      border: 4px solid var(--line); border-top-color: var(--blue);
+      border-radius: 50%; animation: spin 0.85s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .icon-circle {
+      width: 56px; height: 56px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px; font-size: 30px;
+    }
+    .icon-circle.success { background: #dcfce7; color: var(--green); }
+    .icon-circle.error   { background: #fee2e2; color: var(--red); }
+    .icon-circle.warn    { background: #fef3c7; color: var(--amber); }
+
+    .center-state { text-align: center; padding: 16px 8px 8px; }
+    .center-state h2 { font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .center-state p  { font-size: 15px; color: var(--slate); margin-bottom: 12px; }
+
+    /* Inline alert */
+    .alert {
+      border-radius: 10px; padding: 14px 16px; font-size: 14px;
+      margin-bottom: 18px; line-height: 1.55;
+    }
+    .alert.error { background: #fef2f2; border: 1px solid #fecaca; color: #7f1d1d; }
+    .alert.warn  { background: #fffbeb; border: 1px solid #fde68a; color: #78350f; }
+    .alert strong { display: block; margin-bottom: 4px; color: inherit; }
+    .alert .alert-actions { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn-inline {
+      padding: 8px 14px; border-radius: 8px; font-size: 14px; font-weight: 600;
+      border: 1px solid var(--line); background: #fff; color: var(--navy);
+      cursor: pointer; font-family: inherit;
+    }
+    .btn-inline.primary { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .btn-inline:hover { transform: translateY(-1px); }
+
+    /* Suggested-address card */
+    .suggested {
+      background: var(--cloud); border: 1px solid var(--line); border-radius: 10px;
+      padding: 14px 16px; font-size: 14.5px; color: var(--navy); margin-bottom: 4px;
+    }
+    .suggested .label { font-size: 12px; font-weight: 600; color: var(--slate); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 6px; }
+
+    /* Final summary box */
+    .summary {
+      background: var(--cloud); border-radius: 12px; padding: 18px 20px;
+      margin: 8px 0 20px; text-align: left; font-size: 14.5px;
+    }
+    .summary .summary-label { font-size: 12px; font-weight: 600; color: var(--slate); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .summary .summary-addr { color: var(--navy); line-height: 1.5; }
+
+    /* Footer */
+    footer { background: var(--navy); color: #fff; padding: 40px 0 24px; }
+    .footer-grid {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-grid img { height: 36px; background: #fff; padding: 6px 10px; border-radius: 8px; }
+    .footer-links { font-size: 13px; opacity: 0.75; }
+    .footer-links a { color: #fff; margin-left: 16px; text-decoration: none; }
+    .footer-links a:hover { opacity: 1; }
+    .footer-copy { font-size: 12px; opacity: 0.55; margin-top: 16px; }
+
+    @media (max-width: 560px) {
+      .nav-inner { height: 60px; }
+      .logo img { height: 34px; }
+      .nav-cta .btn { padding: 8px 12px; font-size: 13px; }
+      .page { padding: 32px 16px 60px; }
+      .card { padding: 28px 22px; }
+      .card h1 { font-size: 22px; }
+      .form-grid-3 { grid-template-columns: 1fr; }
+      .steps { flex-wrap: wrap; }
+    }
+
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="logo">
+        <img src="../assets/ReferralMax_Logo.png" alt="ReferralMax" />
+      </a>
+      <div class="nav-cta">
+        <a href="../index.html" class="btn btn-ghost">Home</a>
+        <a href="https://app.referralmax.ai/login" class="btn btn-primary">Log In</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE -->
+  <section class="page">
+    <div class="card-wrap">
+
+      <!-- Step indicator -->
+      <div class="steps" id="steps">
+        <div class="step-pill done"><span class="step-num">✓</span> Sign up</div>
+        <div class="step-pill done"><span class="step-num">✓</span> Verify email</div>
+        <div class="step-pill active" id="stepAddress"><span class="step-num">3</span> Confirm address</div>
+      </div>
+
+      <!-- ── State 1: Verifying token (initial) ───────────────────────── -->
+      <div class="card" id="stateVerifying">
+        <div class="center-state">
+          <div class="spinner"></div>
+          <h2>Verifying your email…</h2>
+          <p>One moment while we confirm your link.</p>
+        </div>
+      </div>
+
+      <!-- ── State 2: Token invalid / expired / missing ───────────────── -->
+      <div class="card" id="stateInvalidToken" hidden>
+        <div class="center-state">
+          <div class="icon-circle error">!</div>
+          <h2 id="invalidTitle">This link can't be used.</h2>
+          <p id="invalidMessage">Your verification link is invalid or has expired.</p>
+          <p style="margin-top: 18px;">
+            <a href="../index.html#cta" class="btn btn-primary" style="display:inline-block;">Start over</a>
+          </p>
+          <p style="margin-top: 14px; font-size: 13px;">
+            Need help? <a href="mailto:support@referralmax.ai">support@referralmax.ai</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- ── State 3: Verified — show address form ────────────────────── -->
+      <div class="card" id="stateAddressForm" hidden>
+        <h1 id="addressTitle">You're verified!</h1>
+        <p class="lead" id="addressLead">
+          Last step: confirm the mailing address for <strong id="addressCompany">your business</strong>. We use this to ship welcome packets and reward fulfillment for your customers.
+        </p>
+
+        <!-- Suggested-address banner (Lob came back with a correction). -->
+        <div class="alert warn" id="suggestionAlert" hidden>
+          <strong id="suggestionTitle">We couldn't verify that address.</strong>
+          <span id="suggestionMessage">Please double-check it and try again.</span>
+          <div class="suggested" id="suggestionBox" hidden style="margin-top: 10px;">
+            <div class="label">Did you mean:</div>
+            <div id="suggestionAddr">—</div>
+          </div>
+          <div class="alert-actions" id="suggestionActions" hidden>
+            <button type="button" class="btn-inline primary" id="useSuggestionBtn">Use this address</button>
+            <button type="button" class="btn-inline" id="dismissSuggestionBtn">No, keep what I entered</button>
+          </div>
+        </div>
+
+        <!-- Generic error banner (network failure, server error, etc.) -->
+        <div class="alert error" id="addressError" hidden>
+          <strong>Something went wrong.</strong>
+          <span id="addressErrorMessage">Please try again.</span>
+        </div>
+
+        <form id="addressForm" autocomplete="on" novalidate>
+          <div class="form-row">
+            <label for="primary_line">Street address</label>
+            <input type="text" id="primary_line" autocomplete="address-line1" placeholder="123 Main St" required />
+          </div>
+          <div class="form-row">
+            <label for="secondary_line">Suite / unit <span style="color:var(--slate);font-weight:400;">(optional)</span></label>
+            <input type="text" id="secondary_line" autocomplete="address-line2" placeholder="Suite 200" />
+          </div>
+          <div class="form-grid-3">
+            <div class="form-row">
+              <label for="city">City</label>
+              <input type="text" id="city" autocomplete="address-level2" placeholder="Phoenix" required />
+            </div>
+            <div class="form-row">
+              <label for="state">State</label>
+              <select id="state" autocomplete="address-level1" required>
+                <option value="">—</option>
+                <option>AL</option><option>AK</option><option>AZ</option><option>AR</option>
+                <option>CA</option><option>CO</option><option>CT</option><option>DE</option>
+                <option>DC</option><option>FL</option><option>GA</option><option>HI</option>
+                <option>ID</option><option>IL</option><option>IN</option><option>IA</option>
+                <option>KS</option><option>KY</option><option>LA</option><option>ME</option>
+                <option>MD</option><option>MA</option><option>MI</option><option>MN</option>
+                <option>MS</option><option>MO</option><option>MT</option><option>NE</option>
+                <option>NV</option><option>NH</option><option>NJ</option><option>NM</option>
+                <option>NY</option><option>NC</option><option>ND</option><option>OH</option>
+                <option>OK</option><option>OR</option><option>PA</option><option>RI</option>
+                <option>SC</option><option>SD</option><option>TN</option><option>TX</option>
+                <option>UT</option><option>VT</option><option>VA</option><option>WA</option>
+                <option>WV</option><option>WI</option><option>WY</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="zip_code">ZIP</label>
+              <input type="text" id="zip_code" autocomplete="postal-code" placeholder="85001" inputmode="numeric" pattern="\d{5}(-\d{4})?" required />
+            </div>
+          </div>
+          <button type="submit" class="form-submit" id="addressSubmitBtn">Confirm address &amp; finish setup</button>
+          <p class="form-note">By submitting, you agree to our <a href="../terms/">Terms of Service</a> and <a href="../privacy/">Privacy Policy</a>.</p>
+        </form>
+      </div>
+
+      <!-- ── State 4: Final success ───────────────────────────────────── -->
+      <div class="card" id="stateDone" hidden>
+        <div class="center-state">
+          <div class="icon-circle success">✓</div>
+          <h2 id="doneTitle">You're all set!</h2>
+          <p id="doneLead">Your trial signup is complete. Our team is reviewing your details and will reach out within one business day to get your account activated.</p>
+        </div>
+        <div class="summary">
+          <div class="summary-label">Confirmed mailing address</div>
+          <div class="summary-addr" id="doneAddress">—</div>
+        </div>
+        <p style="text-align:center; font-size: 13px; color: var(--slate);">
+          Questions? <a href="mailto:support@referralmax.ai">support@referralmax.ai</a>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <img src="../assets/ReferralMax_Logo.png" alt="ReferralMax" />
+        <div class="footer-links">
+          <a href="../index.html">Home</a>
+          <a href="../terms/">Terms</a>
+          <a href="../privacy/">Privacy</a>
+          <a href="mailto:support@referralmax.ai">Support</a>
+        </div>
+      </div>
+      <div class="footer-copy">© 2026 ReferralMax, Inc. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Configuration ───────────────────────────────────────────────
+    const SUPABASE_URL = 'https://bacpbsbvgumykdqqqahj.supabase.co';
+    // Public anon key — safe to embed in client-side code (RLS enforces access).
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJhY3Bic2J2Z3VteWtkcXFxYWhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyMjQxMjMsImV4cCI6MjA5MTgwMDEyM30.qjGEGDEI_uA2utrFbBDzib0Llq3kE3JIprVM9pM1tR4';
+    const VALIDATE_ADDRESS_URL = `${SUPABASE_URL}/functions/v1/validate-trial-address`;
+    const VERIFY_EMAIL_RPC_URL = `${SUPABASE_URL}/rest/v1/rpc/verify_trial_email`;
+
+    // ── State helpers ──────────────────────────────────────────────
+    const states = {
+      verifying:    document.getElementById('stateVerifying'),
+      invalidToken: document.getElementById('stateInvalidToken'),
+      addressForm:  document.getElementById('stateAddressForm'),
+      done:         document.getElementById('stateDone'),
+    };
+    function showState(name) {
+      Object.entries(states).forEach(([k, el]) => { el.hidden = (k !== name); });
+      // Steps only matter while we're inside the funnel (verifying / addressForm)
+      document.getElementById('steps').hidden = (name === 'invalidToken' || name === 'done');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Pull token from URL.
+    const TOKEN = new URLSearchParams(window.location.search).get('token');
+
+    // ── Step 1: verify email token ──────────────────────────────────
+    async function verifyToken() {
+      if (!TOKEN) {
+        return showInvalid('Missing verification link', 'This page needs a verification token. Please use the link from the email we sent you.');
+      }
+      try {
+        const res = await fetch(VERIFY_EMAIL_RPC_URL, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ p_token: TOKEN }),
+        });
+        const data = await res.json().catch(() => null);
+        // verify_trial_email returns SETOF rows → array
+        const result = Array.isArray(data) ? data[0] : data;
+
+        if (!res.ok || !result || result.success === false) {
+          const msg = (result && result.message) || 'Your verification link is invalid or has expired.';
+          return showInvalid('This link can\'t be used.', msg);
+        }
+
+        // Success — populate address form intro and switch states.
+        if (result.first_name) {
+          document.getElementById('addressTitle').textContent =
+            `You're verified, ${result.first_name}!`;
+        }
+        if (result.company) {
+          document.getElementById('addressCompany').textContent = result.company;
+        }
+        showState('addressForm');
+        document.getElementById('primary_line').focus();
+      } catch (err) {
+        showInvalid('We couldn\'t reach our servers.',
+          'Please check your internet connection and refresh the page. If this keeps happening, email support@referralmax.ai.');
+      }
+    }
+
+    function showInvalid(title, message) {
+      document.getElementById('invalidTitle').textContent = title;
+      document.getElementById('invalidMessage').textContent = message;
+      showState('invalidToken');
+    }
+
+    // ── Step 2: submit address ──────────────────────────────────────
+    const addressForm = document.getElementById('addressForm');
+    const addressSubmitBtn = document.getElementById('addressSubmitBtn');
+    const addressErrorBox = document.getElementById('addressError');
+    const addressErrorMessage = document.getElementById('addressErrorMessage');
+    const suggestionAlert = document.getElementById('suggestionAlert');
+    const suggestionTitle = document.getElementById('suggestionTitle');
+    const suggestionMessage = document.getElementById('suggestionMessage');
+    const suggestionBox = document.getElementById('suggestionBox');
+    const suggestionAddr = document.getElementById('suggestionAddr');
+    const suggestionActions = document.getElementById('suggestionActions');
+    const useSuggestionBtn = document.getElementById('useSuggestionBtn');
+    const dismissSuggestionBtn = document.getElementById('dismissSuggestionBtn');
+
+    let pendingSuggestion = null; // last suggested address from Lob, if any
+
+    function clearAlerts() {
+      addressErrorBox.hidden = true;
+      suggestionAlert.hidden = true;
+      suggestionBox.hidden = true;
+      suggestionActions.hidden = true;
+      pendingSuggestion = null;
+    }
+    function showError(message) {
+      addressErrorMessage.textContent = message || 'Please try again.';
+      addressErrorBox.hidden = false;
+    }
+
+    function applySuggestion(suggestion) {
+      // Lob returns standardized fields. Be defensive about shapes:
+      // either a flat object with primary_line/city/state/zip_code,
+      // or a single 'address' string.
+      if (!suggestion) return;
+      if (suggestion.primary_line)   document.getElementById('primary_line').value = suggestion.primary_line;
+      if (suggestion.secondary_line) document.getElementById('secondary_line').value = suggestion.secondary_line;
+      if (suggestion.city)           document.getElementById('city').value = suggestion.city;
+      if (suggestion.state)          document.getElementById('state').value = suggestion.state;
+      if (suggestion.zip_code)       document.getElementById('zip_code').value = suggestion.zip_code;
+    }
+
+    function formatAddress(a) {
+      if (!a) return '';
+      if (typeof a === 'string') return a;
+      const line2 = a.secondary_line ? `, ${a.secondary_line}` : '';
+      const parts = [
+        `${a.primary_line || ''}${line2}`.trim(),
+        [a.city, a.state].filter(Boolean).join(', '),
+        a.zip_code || '',
+      ].filter(Boolean);
+      return parts.join(' · ');
+    }
+
+    useSuggestionBtn.addEventListener('click', () => {
+      applySuggestion(pendingSuggestion);
+      clearAlerts();
+      addressForm.requestSubmit();
+    });
+    dismissSuggestionBtn.addEventListener('click', () => {
+      // User insists on what they typed. We can't bypass Lob from the client,
+      // so just hide the banner and let them tweak fields manually.
+      suggestionAlert.hidden = true;
+    });
+
+    addressForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      clearAlerts();
+      addressSubmitBtn.disabled = true;
+      const originalLabel = addressSubmitBtn.textContent;
+      addressSubmitBtn.textContent = 'Validating address…';
+
+      const payload = {
+        token: TOKEN,
+        primary_line:   document.getElementById('primary_line').value.trim(),
+        secondary_line: document.getElementById('secondary_line').value.trim(),
+        city:           document.getElementById('city').value.trim(),
+        state:          document.getElementById('state').value,
+        zip_code:       document.getElementById('zip_code').value.trim(),
+      };
+
+      try {
+        const res = await fetch(VALIDATE_ADDRESS_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json().catch(() => ({}));
+
+        if (res.status === 422) {
+          // Lob returned undeliverable but possibly with a suggestion.
+          const suggestion = data.suggested_address || data.standardized_address || null;
+          pendingSuggestion = suggestion;
+          suggestionTitle.textContent = 'We couldn\'t verify that address.';
+          suggestionMessage.textContent = data.message || 'Please double-check it and try again.';
+          if (suggestion) {
+            suggestionAddr.textContent = formatAddress(suggestion);
+            suggestionBox.hidden = false;
+            suggestionActions.hidden = false;
+          }
+          suggestionAlert.hidden = false;
+          return;
+        }
+
+        if (!res.ok || data.success === false) {
+          throw new Error(data.error || data.message || 'Something went wrong validating that address.');
+        }
+
+        // ── Success ──
+        document.getElementById('doneAddress').textContent =
+          formatAddress(data.standardized_address) || formatAddress(payload);
+        showState('done');
+      } catch (err) {
+        showError(err.message || 'Please try again, or email support@referralmax.ai for help.');
+      } finally {
+        addressSubmitBtn.disabled = false;
+        addressSubmitBtn.textContent = originalLabel;
+      }
+    });
+
+    // Kick off the verification as soon as the page loads.
+    verifyToken();
+  </script>
+</body>
+</html>

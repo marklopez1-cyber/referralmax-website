@@ -605,7 +605,7 @@
         </ul>
       </nav>
       <div class="nav-cta">
-        <a href="https://admin.referralmax.ai/login" class="btn btn-ghost">Log In</a>
+        <a href="https://app.referralmax.ai/login" class="btn btn-ghost">Log In</a>
         <a href="#cta" class="btn btn-primary">Start Free Trial</a>
       </div>
     </div>
@@ -1127,18 +1127,18 @@
             <p class="form-note">By signing up, you agree to our <a href="terms/" style="color:var(--blue);text-decoration:underline;">Terms of Service</a> and <a href="privacy/" style="color:var(--blue);text-decoration:underline;">Privacy Policy</a>. Your phone number will never be shared with third parties for marketing purposes.</p>
           </form>
           <div class="form-divider">or</div>
-          <a href="https://admin.referralmax.ai/login" class="form-alt-btn">Already have an account? Log in</a>
+          <a href="https://app.referralmax.ai/login" class="form-alt-btn">Already have an account? Log in</a>
         </div>
 
         <!-- Success state, hidden until form submits successfully. -->
         <div id="signupSuccess" style="display:none; text-align:center; padding: 20px 8px;">
           <div style="width:56px; height:56px; border-radius:50%; background:#dcfce7; display:flex; align-items:center; justify-content:center; margin: 0 auto 16px; color:var(--green); font-size:30px;">✓</div>
-          <h3 style="color:var(--navy); margin-bottom: 10px;">Request received!</h3>
+          <h3 style="color:var(--navy); margin-bottom: 10px;">Almost there, <span id="successName">there</span>!</h3>
           <p style="color:var(--slate); font-size: 15px; margin-bottom: 8px;">
-            Thanks, <strong id="successName">there</strong>. We'll reach out <strong>today during business hours</strong> to get your trial set up.
+            We've sent a verification email to <strong id="successEmail"></strong>.
           </p>
           <p style="color:var(--slate); font-size: 14px;">
-            We've also sent a confirmation email to <strong id="successEmail"></strong> — check your inbox (and spam folder, just in case).
+            Please click the link in that email to continue setting up your trial. Don't see it? Check your spam folder, or email <a href="mailto:support@referralmax.ai" style="color:var(--blue);">support@referralmax.ai</a> for help.
           </p>
         </div>
       </div>
@@ -1153,7 +1153,10 @@
       event.target.classList.add('active');
     }
 
-    const TRIAL_REQUEST_URL = 'https://api.referralmax.ai/api/public/trial-request';
+    // Supabase Edge Function that creates the trial lead, generates the email-verification
+    // token, and sends the verification email via Resend. After the user clicks the link in
+    // their inbox they're routed to /verify-trial, which finishes the funnel (address form + Lob).
+    const TRIAL_REQUEST_URL = 'https://bacpbsbvgumykdqqqahj.supabase.co/functions/v1/send-trial-verification-email';
 
     // ── Partner-program referral code capture ─────────────────────
     // If someone lands on the site via ?ref=CODE, store it for 30 days so
@@ -1190,16 +1193,37 @@
       btn.disabled = true;
       btn.textContent = 'Sending…';
 
+      // Pull form values once. We keep camelCase locally for readability,
+      // then map to snake_case in the Edge Function payload below.
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName  = document.getElementById('lastName').value.trim();
+      const email     = document.getElementById('email').value.trim();
+      const phone     = document.getElementById('phone').value.trim();
+      const company   = document.getElementById('company').value.trim();
+      const industry  = document.getElementById('industry').value;
+      const source    = document.getElementById('source').value;
+      const honeypot  = document.getElementById('website_url').value;
+
+      // Honeypot: a real human can't see this field, so any value means a bot
+      // filled it. We silently fake a success and never hit the API.
+      if (honeypot) {
+        document.getElementById('successName').textContent = firstName || 'there';
+        document.getElementById('successEmail').textContent = email || 'your email';
+        document.getElementById('signupFormWrap').style.display = 'none';
+        document.getElementById('signupSuccess').style.display = 'block';
+        return;
+      }
+
+      // Edge Function expects snake_case keys (see referralmax-handoff.md, Part 6.A).
       const payload = {
-        firstName: document.getElementById('firstName').value.trim(),
-        lastName:  document.getElementById('lastName').value.trim(),
-        email:     document.getElementById('email').value.trim(),
-        phone:     document.getElementById('phone').value.trim(),
-        company:   document.getElementById('company').value.trim(),
-        industry:  document.getElementById('industry').value,
-        source:    document.getElementById('source').value,
-        website_url: document.getElementById('website_url').value, // honeypot
-        referredByCode: getStoredReferralCode(),
+        first_name: firstName,
+        last_name:  lastName,
+        email:      email,
+        phone:      phone,
+        company:    company,
+        industry:   industry,
+        source:     source,
+        referred_by_code: getStoredReferralCode(),
       };
 
       try {
@@ -1209,14 +1233,16 @@
           body: JSON.stringify(payload),
         });
         const data = await res.json().catch(() => ({}));
-        if (!res.ok) throw new Error(data.error || 'Something went wrong. Please try again.');
+        if (!res.ok || data.success === false) {
+          throw new Error(data.error || data.message || 'Something went wrong. Please try again.');
+        }
 
-        document.getElementById('successName').textContent = payload.firstName || 'there';
-        document.getElementById('successEmail').textContent = payload.email;
+        document.getElementById('successName').textContent = firstName || 'there';
+        document.getElementById('successEmail').textContent = email;
         document.getElementById('signupFormWrap').style.display = 'none';
         document.getElementById('signupSuccess').style.display = 'block';
       } catch (err) {
-        alert(err.message || 'Something went wrong — please email marklopez1@gmail.com and we\'ll help you get set up.');
+        alert(err.message || 'Something went wrong — please email support@referralmax.ai and we\'ll help you get set up.');
         btn.disabled = false;
         btn.textContent = originalLabel;
       }
@@ -1236,12 +1262,12 @@
           <a href="#how">How It Works</a>
           <a href="#features">Features</a>
           <a href="#pricing">Pricing</a>
-          <a href="https://admin.referralmax.ai/login">Log In</a>
+          <a href="https://app.referralmax.ai/login">Log In</a>
         </div>
         <div class="footer-col">
           <h5>Get Started</h5>
           <a href="#cta">Start Free Trial</a>
-          <a href="https://admin.referralmax.ai/login">Admin Login</a>
+          <a href="https://app.referralmax.ai/login">Admin Login</a>
           <a href="mailto:support@referralmax.ai">Contact Us</a>
         </div>
         <div class="footer-col">
