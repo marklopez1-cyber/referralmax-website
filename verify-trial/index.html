@@ -161,6 +161,36 @@
     }
     .suggested .label { font-size: 12px; font-weight: 600; color: var(--slate); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 6px; }
 
+    /* Address autocomplete dropdown */
+    .ac-wrap { position: relative; }
+    .ac-input-wrap { position: relative; }
+    .ac-spinner {
+      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+      width: 16px; height: 16px;
+      border: 2px solid var(--line); border-top-color: var(--blue);
+      border-radius: 50%; animation: spin 0.85s linear infinite;
+      pointer-events: none;
+    }
+    .ac-dropdown {
+      position: absolute; left: 0; right: 0; top: calc(100% + 4px); z-index: 10;
+      background: #fff; border: 1px solid var(--line); border-radius: 10px;
+      box-shadow: 0 12px 28px -8px rgba(14,42,71,0.18);
+      max-height: 280px; overflow-y: auto;
+    }
+    .ac-item {
+      padding: 10px 14px; font-size: 14.5px; color: var(--navy);
+      cursor: pointer; border-bottom: 1px solid var(--line);
+      line-height: 1.35;
+    }
+    .ac-item:last-child { border-bottom: none; }
+    .ac-item:hover, .ac-item.active { background: var(--cloud); }
+    .ac-item .ac-primary { font-weight: 600; }
+    .ac-item .ac-secondary { font-size: 13px; color: var(--slate); margin-top: 2px; }
+    .ac-attrib {
+      padding: 6px 14px; font-size: 11px; color: var(--slate);
+      background: var(--cloud); text-align: right; letter-spacing: 0.3px;
+    }
+
     /* Final summary box */
     .summary {
       background: var(--cloud); border-radius: 12px; padding: 18px 20px;
@@ -273,9 +303,13 @@
         </div>
 
         <form id="addressForm" autocomplete="on" novalidate>
-          <div class="form-row">
+          <div class="form-row ac-wrap">
             <label for="primary_line">Street address</label>
-            <input type="text" id="primary_line" autocomplete="address-line1" placeholder="123 Main St" required />
+            <div class="ac-input-wrap">
+              <input type="text" id="primary_line" autocomplete="off" placeholder="123 Main St" required role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="acDropdown" />
+              <div class="ac-spinner" id="acSpinner" hidden></div>
+            </div>
+            <div class="ac-dropdown" id="acDropdown" role="listbox" hidden></div>
           </div>
           <div class="form-row">
             <label for="secondary_line">Suite / unit <span style="color:var(--slate);font-weight:400;">(optional)</span></label>
@@ -357,6 +391,7 @@
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJhY3Bic2J2Z3VteWtkcXFxYWhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyMjQxMjMsImV4cCI6MjA5MTgwMDEyM30.qjGEGDEI_uA2utrFbBDzib0Llq3kE3JIprVM9pM1tR4';
     const VALIDATE_ADDRESS_URL = `${SUPABASE_URL}/functions/v1/validate-trial-address`;
     const VERIFY_EMAIL_RPC_URL = `${SUPABASE_URL}/rest/v1/rpc/verify_trial_email`;
+    const AUTOCOMPLETE_URL    = `${SUPABASE_URL}/functions/v1/autocomplete-trial-address`;
 
     // ── State helpers ──────────────────────────────────────────────
     const states = {
@@ -538,6 +573,161 @@
         addressSubmitBtn.textContent = originalLabel;
       }
     });
+
+    // ── Address autocomplete (Lob US Autocompletions via EF) ───────
+    // As the user types in the street address, fetch suggestions and show
+    // a dropdown. Selecting one populates city/state/zip in one shot.
+    // The EF gates by token + email_verified, so this only works for
+    // verified leads — same trust boundary as validate-trial-address.
+    (function initAutocomplete() {
+      const input    = document.getElementById('primary_line');
+      const dropdown = document.getElementById('acDropdown');
+      const spinner  = document.getElementById('acSpinner');
+      const cityInput  = document.getElementById('city');
+      const stateInput = document.getElementById('state');
+      const zipInput   = document.getElementById('zip_code');
+
+      let debounceTimer = null;
+      let activeRequestId = 0;       // for racing requests — only the latest wins
+      let suggestions = [];           // last rendered suggestion set
+      let activeIdx = -1;             // keyboard-highlighted item
+      let suppressNextFetch = false;  // set true after picking a suggestion
+
+      function closeDropdown() {
+        dropdown.hidden = true;
+        dropdown.innerHTML = '';
+        activeIdx = -1;
+        input.setAttribute('aria-expanded', 'false');
+      }
+
+      function renderSuggestions(items) {
+        suggestions = items;
+        if (!items.length) { closeDropdown(); return; }
+        dropdown.innerHTML = items.map((s, i) => `
+          <div class="ac-item" role="option" data-idx="${i}">
+            <div class="ac-primary">${escapeHtml(s.primary_line)}</div>
+            <div class="ac-secondary">${escapeHtml(s.city)}, ${escapeHtml(s.state)} ${escapeHtml(s.zip_code)}</div>
+          </div>
+        `).join('') + '<div class="ac-attrib">Suggestions by Lob</div>';
+        dropdown.hidden = false;
+        activeIdx = -1;
+        input.setAttribute('aria-expanded', 'true');
+      }
+
+      function escapeHtml(str) {
+        return String(str ?? '')
+          .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+      }
+
+      function applySelection(s) {
+        suppressNextFetch = true;
+        input.value      = s.primary_line || '';
+        cityInput.value  = s.city || '';
+        stateInput.value = s.state || '';
+        zipInput.value   = s.zip_code || '';
+        closeDropdown();
+        // Move focus to the optional "suite/unit" field so the user can
+        // add it without breaking flow, or skip straight to submit.
+        const secondary = document.getElementById('secondary_line');
+        if (secondary) secondary.focus();
+      }
+
+      function setActive(idx) {
+        const items = dropdown.querySelectorAll('.ac-item');
+        items.forEach(el => el.classList.remove('active'));
+        if (idx >= 0 && idx < items.length) {
+          items[idx].classList.add('active');
+          items[idx].scrollIntoView({ block: 'nearest' });
+        }
+        activeIdx = idx;
+      }
+
+      async function fetchSuggestions(prefix) {
+        const reqId = ++activeRequestId;
+        spinner.hidden = false;
+        try {
+          const res = await fetch(AUTOCOMPLETE_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              token: TOKEN,
+              address_prefix: prefix,
+              // City/state/zip biases — pass current values if user filled them
+              city:     cityInput.value.trim() || undefined,
+              state:    stateInput.value || undefined,
+              zip_code: zipInput.value.trim() || undefined,
+            }),
+          });
+          // Discard if a newer request has been issued in the meantime.
+          if (reqId !== activeRequestId) return;
+          const data = await res.json().catch(() => ({}));
+          renderSuggestions(Array.isArray(data.suggestions) ? data.suggestions : []);
+        } catch {
+          // Network failure — silently degrade. User can still type the address.
+          if (reqId === activeRequestId) closeDropdown();
+        } finally {
+          if (reqId === activeRequestId) spinner.hidden = true;
+        }
+      }
+
+      // ── Event wiring ─────────────────────────────────────────────
+      input.addEventListener('input', () => {
+        if (suppressNextFetch) { suppressNextFetch = false; return; }
+        clearTimeout(debounceTimer);
+        const prefix = input.value.trim();
+        if (prefix.length < 4) { closeDropdown(); spinner.hidden = true; return; }
+        debounceTimer = setTimeout(() => fetchSuggestions(prefix), 250);
+      });
+
+      input.addEventListener('keydown', (e) => {
+        const open = !dropdown.hidden && suggestions.length > 0;
+        if (e.key === 'ArrowDown') {
+          if (!open) return;
+          e.preventDefault();
+          setActive((activeIdx + 1) % suggestions.length);
+        } else if (e.key === 'ArrowUp') {
+          if (!open) return;
+          e.preventDefault();
+          setActive(activeIdx <= 0 ? suggestions.length - 1 : activeIdx - 1);
+        } else if (e.key === 'Enter') {
+          if (open && activeIdx >= 0) {
+            e.preventDefault();
+            applySelection(suggestions[activeIdx]);
+          }
+          // Otherwise let the browser submit the form normally.
+        } else if (e.key === 'Escape') {
+          if (open) { e.preventDefault(); closeDropdown(); }
+        }
+      });
+
+      // Click on a suggestion → fill fields. We listen on the dropdown
+      // (delegation) instead of binding per-item so we don't have to rebind
+      // on every render.
+      dropdown.addEventListener('mousedown', (e) => {
+        // mousedown (not click) so the input doesn't blur and close us first.
+        const item = e.target.closest('.ac-item');
+        if (!item) return;
+        e.preventDefault();
+        const idx = parseInt(item.dataset.idx, 10);
+        if (!isNaN(idx) && suggestions[idx]) applySelection(suggestions[idx]);
+      });
+
+      // Hide on outside click.
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.ac-wrap')) closeDropdown();
+      });
+
+      // Hide if user tabs away from the address field area.
+      input.addEventListener('blur', () => {
+        // Defer so a click on a suggestion still registers.
+        setTimeout(() => {
+          if (!document.activeElement || !document.activeElement.closest('.ac-wrap')) {
+            closeDropdown();
+          }
+        }, 150);
+      });
+    })();
 
     // Kick off the verification as soon as the page loads.
     verifyToken();
