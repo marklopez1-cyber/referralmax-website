@@ -1186,6 +1186,28 @@
       } catch { return null; }
     }
 
+    // ── Phone auto-format ───────────────────────────────────────────
+    // Mirrors the formatPhoneAsType() utility used in the React platform
+    // so the trial signup form gets the same (xxx)xxx-xxxx mask. Strips
+    // non-digits, drops a leading "1" if pasted, caps at 10 digits, and
+    // builds the mask incrementally as the user types.
+    function formatPhoneAsType(raw) {
+      let d = String(raw || '').replace(/\D/g, '');
+      if (d.length === 11 && d.startsWith('1')) d = d.slice(1);
+      d = d.slice(0, 10);
+      if (d.length === 0) return '';
+      if (d.length < 4)   return '(' + d;
+      if (d.length < 7)   return '(' + d.slice(0, 3) + ')' + d.slice(3);
+      return '(' + d.slice(0, 3) + ')' + d.slice(3, 6) + '-' + d.slice(6);
+    }
+    (function attachPhoneMask() {
+      const input = document.getElementById('phone');
+      if (!input) return;
+      const handler = function () { input.value = formatPhoneAsType(input.value); };
+      input.addEventListener('input', handler);
+      input.addEventListener('paste', function () { setTimeout(handler, 0); });
+    })();
+
     async function handleSignup(e) {
       e.preventDefault();
       const btn = document.getElementById('submitBtn');

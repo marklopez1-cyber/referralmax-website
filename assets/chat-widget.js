@@ -204,6 +204,24 @@
       saveState();
       render();
     });
+
+    // Auto-format the phone field as the user types — same (xxx)xxx-xxxx
+    // mask used on the main trial signup form and inside the React platform.
+    const phoneInput = form.querySelector('input[name="phone"]');
+    if (phoneInput) {
+      const fmt = function (raw) {
+        let d = String(raw || '').replace(/\D/g, '');
+        if (d.length === 11 && d.startsWith('1')) d = d.slice(1);
+        d = d.slice(0, 10);
+        if (d.length === 0) return '';
+        if (d.length < 4)   return '(' + d;
+        if (d.length < 7)   return '(' + d.slice(0, 3) + ')' + d.slice(3);
+        return '(' + d.slice(0, 3) + ')' + d.slice(3, 6) + '-' + d.slice(6);
+      };
+      const handler = function () { phoneInput.value = fmt(phoneInput.value); };
+      phoneInput.addEventListener('input', handler);
+      phoneInput.addEventListener('paste', function () { setTimeout(handler, 0); });
+    }
     const wrap = el('div', { class: 'rmx-chat__row' });
     wrap.appendChild(el('div', { class: 'rmx-chat__row-avatar' }, 'R'));
     const col = el('div', { style: { flex: '1', minWidth: 0 } });
